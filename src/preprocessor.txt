@@ -1,0 +1,11 @@
+preprocessor is a separate program that runs before the compiler when you compile your program.
+It’s purpose is to process directives.
+Directives are specific instructions that start with a # symbol and end with a newline (NOT a semicolon).
+
+There are several different types of directives:
+1)Includes
+2)Macro defines
+3)Conditional compilation
+4)Header guards
+
+The preprocessor manipulates text before the compiler gets to it.
