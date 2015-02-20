@@ -38,27 +38,36 @@ int main ()
     items_quantiy["water melon"]=6;
     
     
-    
-    
-    
-    items_quantiy.size();
-    
-    for(std::map<std::string,int>::iterator it=items_quantiy.begin();it!=items_quantiy.end();++it)
+    if(items_quantiy.find("zzzz")!=items_quantiy.end())
     {
-	std::cout<<it->first<< ":"<<it->second <<std::endl;
+        std::cout<<"item found" <<std::endl;
     }
-    
-    
-    std::map< std::string, int >::iterator it= items_quantiy.find("melon");
-    
-    if (it==items_quantiy.end())
-    {
-	std::cout<<"not found" <<std::endl;
-    } 
     else
     {
-	std::cout<<"item found, "<<it->second <<std::endl;
+        std::cout<<"item not found" <<std::endl;
     }
+
+
+    
+    
+//    items_quantiy.size();
+    
+//    for(std::map<std::string,int>::iterator it=items_quantiy.begin();it!=items_quantiy.end();++it)
+//    {
+//	std::cout<<it->first<< ":"<<it->second <<std::endl;
+//    }
+    
+    
+//    std::map< std::string, int >::iterator it= items_quantiy.find("melon");
+    
+//    if (it==items_quantiy.end())
+//    {
+//	std::cout<<"not found" <<std::endl;
+//    }
+//    else
+//    {
+//	std::cout<<"item found, "<<it->second <<std::endl;
+//    }
     
     
 //     

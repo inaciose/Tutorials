@@ -36,17 +36,22 @@ endif()
 MESSAGE("Number of Cores: " ${PROCESSOR_COUNT} )
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/src/)
 
-ADD_EXECUTABLE(lmcma src/lmcma.cpp)
-TARGET_LINK_LIBRARIES(lmcma)
+#ADD_EXECUTABLE(lmcma src/lmcma.cpp)
+#TARGET_LINK_LIBRARIES(lmcma)
+#add_library(add SHARED src/add.cpp)
+
+#ADD_EXECUTABLE(DynamicallyLoadedLibraries src/DynamicallyLoadedLibraries.cpp  )
+#TARGET_LINK_LIBRARIES(DynamicallyLoadedLibraries dl )
 
 
 
-
-add_library(add SHARED src/add.cpp)
-
-ADD_EXECUTABLE(DynamicallyLoadedLibraries src/DynamicallyLoadedLibraries.cpp  )
-TARGET_LINK_LIBRARIES(DynamicallyLoadedLibraries dl )
+ADD_EXECUTABLE(Sandbox src/Sandbox.cpp)
+TARGET_LINK_LIBRARIES(Sandbox)
 
 
+ADD_EXECUTABLE(Map_custom_type src/Container/Map_custom_type.cpp)
+TARGET_LINK_LIBRARIES(Map_custom_type)
 
+ADD_EXECUTABLE(Map src/Container/Map.cpp)
+TARGET_LINK_LIBRARIES(Map)
 
