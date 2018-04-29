@@ -87,9 +87,9 @@ The memory a program uses is typically divided into four different areas:
 */
 
 using namespace std;
-int HeapStackmain ()
+//int HeapStackmain ()
 //int main()
-{
+//{
 
 /*
 	The heap
@@ -100,8 +100,8 @@ int HeapStackmain ()
 	Because the precise location of the memory allocated is not known in advance( when you are developing your code),
 	the memory allocated has to be accessed indirectly — which is why new returns a pointer!
 */
-	int *pValue = new int; // pValue is assigned 4 bytes from the heap
-	int *pArray = new int[10]; // pArray is assigned 40 bytes from the heap
+//	int *pValue = new int; // pValue is assigned 4 bytes from the heap
+//	int *pArray = new int[10]; // pArray is assigned 40 bytes from the heap
 
 
 //	pValue1 and pValue2 may not have sequential addresses!
@@ -150,6 +150,10 @@ int HeapStackmain ()
 */
 
 
-	cout<<" "<<endl;
+//	cout<<" "<<endl;
+//	return 0;
+//}
+int main()
+{
 	return 0;
 }
