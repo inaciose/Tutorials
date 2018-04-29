@@ -115,26 +115,26 @@ TARGET_LINK_LIBRARIES(assert)
 #TARGET_LINK_LIBRARIES(dynamic_programming)
 
 
-set(Ceres_DIR  "$ENV{HOME}/usr/lib/cmake/Ceres")
-find_package (Ceres REQUIRED)
-MESSAGE("Ceres_VERSION: " ${Ceres_VERSION})
-MESSAGE("CERES_INCLUDE_DIRS: " ${CERES_INCLUDE_DIRS})
-MESSAGE("CERES_LIBRARIES: " ${CERES_LIBRARIES})
+#set(Ceres_DIR  "$ENV{HOME}/usr/lib/cmake/Ceres")
+#find_package (Ceres REQUIRED)
+#MESSAGE("Ceres_VERSION: " ${Ceres_VERSION})
+#MESSAGE("CERES_INCLUDE_DIRS: " ${CERES_INCLUDE_DIRS})
+#MESSAGE("CERES_LIBRARIES: " ${CERES_LIBRARIES})
 
 
-set(gflags_DIR "$ENV{HOME}/usr/lib/cmake/gflags/")
+#set(gflags_DIR "$ENV{HOME}/usr/lib/cmake/gflags/")
 
-find_package(gflags REQUIRED)
-#find_package(gflags COMPONENTS nothreads_static)
-MESSAGE("GFLAGS_FOUND: " ${GFLAGS_FOUND})
-MESSAGE("GFLAGS_INCLUDE_DIRS: " ${GFLAGS_INCLUDE_DIRS})
-MESSAGE("GFLAGS_LIBRARIES: " ${GFLAGS_LIBRARIES})
-MESSAGE("GFLAGS_LIBRARYRARY_DIRS: " ${GFLAGS_LIBRARYRARY_DIRS} )
-add_definitions(-DCERES_GFLAGS_NAMESPACE=${GFLAGS_NAMESPACE})
+#find_package(gflags REQUIRED)
+##find_package(gflags COMPONENTS nothreads_static)
+#MESSAGE("GFLAGS_FOUND: " ${GFLAGS_FOUND})
+#MESSAGE("GFLAGS_INCLUDE_DIRS: " ${GFLAGS_INCLUDE_DIRS})
+#MESSAGE("GFLAGS_LIBRARIES: " ${GFLAGS_LIBRARIES})
+#MESSAGE("GFLAGS_LIBRARYRARY_DIRS: " ${GFLAGS_LIBRARYRARY_DIRS} )
+#add_definitions(-DCERES_GFLAGS_NAMESPACE=${GFLAGS_NAMESPACE})
 
 
-ADD_EXECUTABLE(glog_example src/glog_example.cpp)
-TARGET_LINK_LIBRARIES(glog_example ${GFLAGS_LIBRARIES} ${CERES_LIBRARIES} gflags)
+#ADD_EXECUTABLE(glog_example src/glog_example.cpp)
+#TARGET_LINK_LIBRARIES(glog_example ${GFLAGS_LIBRARIES} ${CERES_LIBRARIES} gflags)
 
 
 ADD_EXECUTABLE(VectorConversiontoArray src/Container/VectorConversiontoArray.cpp)
