@@ -30,8 +30,10 @@ void InceamentVectorElements(vector<int>& v)
 }
 
 
+
+
 //int Vectormain()
-int main()
+int main_temp()
 {
 	vector<int> first;
 
@@ -153,4 +155,19 @@ cout<<testvector.back()<<endl;
 
 
 	return 0;
+}
+
+int main()
+{
+    vector<int> first;
+
+    first.push_back(0);
+    first.push_back(1);
+    first.push_back(2);
+
+    vector<int> second;
+    second=first;
+    first.clear();
+    std::cout<<second.size() <<std::endl;
+
 }

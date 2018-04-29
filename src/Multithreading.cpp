@@ -4,6 +4,9 @@
 #include <iostream>
 #include <math.h>
 #include <time.h>
+#include <thread>
+#include <mutex>
+
 //http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html
 
 
@@ -124,6 +127,237 @@ void *print_message_function( void *ptr )
 }
 
 
+void function_1()
+{
+    std::cout<<"function_1" <<std::endl;
+    cout << '\n' << "Press a key to continue1...";
+    while (cin.get() != '\n');
+}
+
+
+int who_is_better;
+
+void *f1(void * arg)
+{
+//    int who_is_better;
+
+    std::cout<< "thread 1 is running"<<std::endl;
+    who_is_better=1;
+    while(1)
+        std::cout<< "thread " <<who_is_better<<" is better" <<std::endl;
+    return NULL;
+}
+
+void *f2(void * arg)
+{
+//    int who_is_better;
+    std::cout<< "thread 2 is running"<<std::endl;
+
+    who_is_better=2;
+    while(1)
+        std::cout<< "thread " <<who_is_better<<" is better" <<std::endl;
+    return NULL;
+}
+
+
+void *f3(void * arg)
+{
+    for(std::size_t i=0;i<10000;i++)
+    {
+       std::cout<< "thread: "<< i <<std::endl;
+    }
+    return NULL;
+}
+
+
+class Fctor
+{
+public:
+    void operator()()
+    {
+        for(std::size_t i=0;i<10000;i++)
+        {
+           std::cout<< "thread: "<< i <<std::endl;
+        }
+    }
+};
+
+
+class Fctor2
+{
+public:
+    void operator()(std::string msg)
+    {
+        for(std::size_t i=0;i<10000;i++)
+        {
+           std::cout<< msg <<std::endl;
+        }
+    }
+};
+
+
+std::mutex mu;
+
+void shared_print2(string msg,int id)
+{
+    std::lock_guard<std::mutex> gaurd(mu); // when the gaurd goes out of scop, mu will be unlocked
+    std::cout<< msg<<id <<std::endl;
+
+}
+
+
+void shared_print(string msg,int id)
+{
+    mu.lock();
+    std::cout<< msg<<id <<std::endl;
+    mu.unlock();
+}
+int main1(int argc, char ** argv)
+{
+//    std::thread t1(function_1);
+//    t1.join();
+
+//    cout << '\n' << "Press a key to continue...";
+//    while (cin.get() != '\n');
+//    return 0;
+
+/*
+    pthread_t th1,th2;
+    pthread_create(&th1,NULL,f1,NULL );
+    pthread_create(&th2,NULL,f2,NULL );
+
+    pthread_join(th1,NULL);
+    pthread_join(th2,NULL);
+*/
+/*
+    pthread_t th3;
+    pthread_create(&th3,NULL,f3,NULL );
+//    pthread_detach(th3);
+
+
+
+    for(std::size_t i=0;i<1000;i++)
+    {
+        std::cout<< "main: "<< i <<std::endl;
+    }
+//    pthread_join(th3,NULL);
+
+
+    //if any thread call exit -> it will call all thread accociate with that process or main reches the return
+    // or the thread calls pthread-exit or reach its own return
+
+    // thread could be created detached or later could be detached
+    //detach and join can be done only once
+    //th2.joinable
+
+    try
+    {
+        //main thread stuff
+    }
+    catch(...)
+    {
+        //t1.join
+        throw;
+    }
+
+
+
+    Fctor my_Fctor;
+    std::thread std_t1(my_Fctor);
+
+    std::thread std_t2( (Fctor()));
+
+
+    std::string msg;
+    msg="hello";
+    std::thread std_t3( (Fctor2()),msg);
+
+    // std::move transfering ownership of thred i.e t2=t1 wont work
+    //
+    //std::this_thread::get_id()
+    //std_t1.get_id();
+*/
+    //over subscription
+    std::cout<<"--------------------------"<<std::endl;
+    std::cout<<std::thread::hardware_concurrency()<<std::endl;
+
+
+}
+
+
+
+
+#define MAX 100 /* maximum number of images */
+
+typedef int image_type;
+int bufavail = MAX;
+
+
+
+image_type frame_buf[MAX];
+std::mutex mu_lock;
+
+void grab(image_type dig_image)
+{
+    return;
+}
+void analyze(image_type track_image)
+{
+    return;
+}
+
+void *digitizer(void * arg)
+{
+  image_type dig_image;
+  int tail = 0;
+
+  while(1){ /* begin loop */
+    mu_lock.lock();
+    if (bufavail > 0){
+      grab(dig_image);
+
+      frame_buf[tail % MAX] = dig_image;
+      tail = tail + 1;
+      bufavail = bufavail - 1;
+    }
+    mu_lock.unlock();
+  } /* end loop */
+}
+
+void *tracker(void * arg) {
+  image_type track_image;
+  int head = 0;
+  while(1)
+  mu_lock.lock();
+  { /* begin loop */
+    if (bufavail < MAX) {
+      track_image = frame_buf[head % MAX];
+      head = head + 1;
+      bufavail = bufavail + 1;
+
+      analyze(track_image);
+    }
+    mu_lock.unlock();
+  } /* end loop */
+
+}
+
+int main()
+{
+
+
+    pthread_t digitizer_tid, tracker_tid;
+    pthread_create(&digitizer_tid,NULL,digitizer,NULL );
+    pthread_create(&tracker_tid,NULL,tracker,NULL );
+
+  /* thread ids */
+
+  /* create digitizer thread */
+
+  /* rest of the code of main including
+   * termination conditions of the program
+   */
+}
 
 
 

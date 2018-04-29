@@ -3,6 +3,79 @@
 
 /*
 
+
+func2()
+{
+    a,b;
+}
+
+
+func1()
+{
+    a,b;
+}
+
+sum;
+main()
+{
+    x,y;
+    int *z=new int[10];
+    func1()
+    func2()
+}
+
+---------------------------------
+|                               |  <-heap
+|                               |
+|               z               |
+|                               |
+|                               |
+|                               |
+|                               |
+|-------------------------------|
+|                               |  <-stack
+|                               |
+|-------------------------------|
+|            func2()            |  <-stack frame3
+|             a,b               |
+|-------------------------------|
+|            func1()            |  <-stack frame2
+|            a,b                |
+|--------------------------------
+|            main()             |  <-stack frame1
+|             x,y               |
+|                               |
+|-------------------------------|
+|             sum               | <- static/global vaiables
+|-------------------------------|
+|          code(Text)           |
+|            main               |
+|            func1              |
+|            func2              |
+---------------------------------
+
+
+
+
+heap:
+    grow downward
+
+The memory size for these three section is fixed and it is not growing
+code:
+    code of application
+
+static/global vaiables:
+    are avaiable during whole life cycle of application
+
+stack:
+    local variables/ function calls
+
+
+
+*/
+
+/*
+
 The memory a program uses is typically divided into four different areas:
 
 1)The code area, where the compiled program sits in memory.
