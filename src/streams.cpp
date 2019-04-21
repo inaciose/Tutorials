@@ -150,7 +150,7 @@ void stringstream()
 
 int main()
 {
-//    readingWrittingFiles();
+    readingWrittingFiles();
 //    formatingStream();
-    stringstream();
+//    stringstream();
 }

@@ -18,15 +18,9 @@ void unique()
     //will eliminate consequent redundant elements
     std::vector<int>vec1={1,1,5,3,1,7};
     std::vector<int>::iterator last_it=std::unique(vec1.begin(),vec1.end()); //vec1-> {1,5,3,1,7,x} where 'x' is indeterminate
-    for(std::vector<int>::iterator it=vec1.begin();it!=vec1.end() ;it++)
-    {
-        std::cout<< *it<<',';
-    }
-    std::cout<< '\n';
 
 
-
-    for(std::vector<int>::iterator it=vec1.begin();it!=last_it ;it++)
+    for(std::vector<int>::iterator it=vec1.begin();it!=last_it ;it++)//1,5,3,1,7
     {
         std::cout<< *it<<',';
     }
@@ -53,9 +47,7 @@ void unique()
 
     // remove consecutive spaces
     std::string s = "wanna go    to      space?";
-    auto end = std::unique(s.begin(), s.end(), [](char l, char r){
-        return std::isspace(l) && std::isspace(r) && l == r;
-    });
+    auto end = std::unique(s.begin(), s.end(), [](char l, char r){ return std::isspace(l) && std::isspace(r) && l == r; });
     // s now holds "wanna go to space?xxxxxxxx", where 'x' is indeterminate
     std::cout << std::string(s.begin(), end) << '\n';
 
@@ -159,9 +151,9 @@ void search()
 
 void adjacent_find()
 {
-    //std::adjacent_find
-    std::vector<int> numbers={-1,-2,3,4,0,-4,7,5,3};
-    std::vector<int>::iterator find_it=std::adjacent_find(numbers.begin(), numbers.end(),[](int x, int y){return (y==x+1);} );
+    //Searches the range [first, last) for two consecutive identical elements.
+    std::vector<int> numbers={-1,-2,3,4,6,-4,7,5,3};
+    std::vector<int>::iterator find_it=std::adjacent_find(numbers.begin(), numbers.end(),[](int x, int y){return (y==x+2);} );
     std::cout << "the first occurrence n,n+1 happens at: " << find_it-numbers.begin() << std::endl;
 
 }
@@ -371,6 +363,14 @@ void shuffel()
     std::cout<<"\n";
 }
 
+double ranndomGenerator(int rangeFrom=0, int rangeTo=1)
+{
+	std::random_device rand_dev;
+	std::mt19937 generator(rand_dev());
+	std::uniform_real_distribution<double> distr(rangeFrom, rangeTo);
+	return distr(generator);
+}
+
 bool cmp_sort_algorithm(int x, int y)
 {
     return x<y;
@@ -488,13 +488,19 @@ Arr[(2*i)+2]	Returns the right child node
 
 1) getMini(): It returns the root element of Min Heap. Time Complexity of this operation is O(1).
 
-2) extractMin(): Removes the minimum element from Min Heap. Time Complexity of this Operation is O(Logn) as this operation needs to maintain the heap property (by calling heapify()) after removing root.
+2) extractMin(): Removes the minimum element from Min Heap. Time Complexity of this Operation is O(Logn) as
+this operation needs to maintain the heap property (by calling heapify()) after removing root.
 
-3) decreaseKey(): Decreases value of key. Time complexity of this operation is O(Logn). If the decreases key value of a node is greater than parent of the node, then we don’t need to do anything. Otherwise, we need to traverse up to fix the violated heap property.
+3) decreaseKey(): Decreases value of key. Time complexity of this operation is O(Logn).
+If the decreases key value of a node is greater than parent of the node, then we don’t need to do anything.
+Otherwise, we need to traverse up to fix the violated heap property.
 
-4) insert(): Inserting a new key takes O(Logn) time. We add a new key at the end of the tree. IF new key is greater than its parent, then we don’t need to do anything. Otherwise, we need to traverse up to fix the violated heap property.
+4) insert(): Inserting a new key takes O(Logn) time.
+We add a new key at the end of the tree. IF new key is greater than its parent, then we don’t need to do anything. Otherwise,
+we need to traverse up to fix the violated heap property.
 
-5) delete(): Deleting a key also takes O(Logn) time. We replace the key to be deleted with minum infinite by calling decreaseKey(). After decreaseKey(), the minus infinite value must reach root, so we call extractMin() to remove key.
+5) delete(): Deleting a key also takes O(Logn) time. We replace the key to be deleted with minum infinite by
+calling decreaseKey(). After decreaseKey(), the minus infinite value must reach root, so we call extractMin() to remove key.
 
 
 
@@ -541,21 +547,20 @@ c) Merge K Sorted Arrays.
 
     //Adding a new element
     v.push_back(100);
+    std::cout<< (std::is_heap(v.begin(),v.end()) ? "it is a heap" : "it is not a heap" )   <<std::endl;
     std::push_heap(v.begin(),v.end());
-
-
+    std::cout<< (std::is_heap(v.begin(),v.end()) ? "it is a heap" : "it is not a heap" )   <<std::endl;
 
 
     //sorting a heap -> it only works on a heap, so you should first turn your vetor into a heap
     std::sort_heap(v.begin(),v.end());
-
-
 }
 
 
 
 void binary_search()
 {
+    // your data shoudl be always sorted
     std::vector<int> vec1={3,6,7,9,12,5,-1};
     std::sort(vec1.begin(),vec1.end());
     int number_to_search_for=7;
@@ -576,7 +581,9 @@ void includes()
 
 }
 
-template<typename T> void print_queue(T& q) {
+template<typename T>
+void print_queue(T& q)
+{
     while(!q.empty()) {
         std::cout << q.top() << " ";
         q.pop();
@@ -587,6 +594,7 @@ template<typename T> void print_queue(T& q) {
 
 void priority_queue()
 {
+    //use heap for finding max/min value,
     std::priority_queue<int> q;
 
     for(int n : {1,8,5,6,3,4,0,9,7,2})
@@ -668,6 +676,8 @@ void merge()
 
 int main(int argc, char ** argv)
 {
+
+    unique();
 /*
     count();
     min_max();
@@ -728,45 +738,45 @@ int main(int argc, char ** argv)
 
 
 
-//Iterator vector, deque, array
+////Iterator vector, deque, array
 
-    //std::queue
-    std::array<int, 3> a1{ {1, 2, 3} };
-    std::array<int, 3>::iterator array_it;
-    array_it++;
-    array_it=array_it+5;
-    //if(array_it>array2_it)
+//    //std::queue
+//    std::array<int, 3> a1{ {1, 2, 3} };
+//    std::array<int, 3>::iterator array_it;
+//    array_it++;
+//    array_it=array_it+5;
+//    //if(array_it>array2_it)
 
-//1) Random Access -> Vector, Deque, Array
+////1) Random Access -> Vector, Deque, Array
 
-    //double-ended queue
-    //As opposed to std::vector, the elements of a deque are not stored contiguously
-    std::deque<int>::iterator deque_it;
-
-
-
-//2) Biderectional Iterator -> List, Set, Multi set, Multimap
-    std::list<int>::iterator list_it;
-    list_it++;
-    list_it--;
-    //list_it=list_it+5; -> error
-
-
-//3) Forward Iterator
-
-    std::forward_list<int>::iterator forward_list_iterator;
+//    //double-ended queue
+//    //As opposed to std::vector, the elements of a deque are not stored contiguously
+//    std::deque<int>::iterator deque_it;
 
 
 
-
-    //std::ostream_iterator
-    //std::back_insert_iterator
-    //std::back_inserter
-
-
-    //std::tie
-    //std::begin(digits), std::end(digits)
-    //std::align();
+////2) Biderectional Iterator -> List, Set, Multi set, Multimap
+//    std::list<int>::iterator list_it;
+//    list_it++;
+//    list_it--;
+//    //list_it=list_it+5; -> error
 
 
+////3) Forward Iterator
+
+//    std::forward_list<int>::iterator forward_list_iterator;
+
+
+
+
+//    //std::ostream_iterator
+//    //std::back_insert_iterator
+//    //std::back_inserter
+
+
+//    //std::tie
+//    //std::begin(digits), std::end(digits)
+//    //std::align();
+
+    permutation();
 }

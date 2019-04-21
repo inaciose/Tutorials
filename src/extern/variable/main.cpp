@@ -72,23 +72,6 @@ main.cpp:
  */
 
 
-/*
-
-extern "C" 
-
-extern "C" makes a function-name in C++ have 'C' linkage (compiler does not mangle the name) so that client C code can link to (i.e use) 
-
-
-
-extern "C" void foo(int);
-extern "C"
-{
-   void g(char);
-   int i;
-}
-
-*/
-
 using namespace std;
 
 int Externmain()
