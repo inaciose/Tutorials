@@ -86,8 +86,6 @@ set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 #TARGET_LINK_LIBRARIES(glog_example ${GFLAGS_LIBRARIES} ${CERES_LIBRARIES} gflags)
 
 
-ADD_EXECUTABLE(tmp  src/tmp.cpp )
-TARGET_LINK_LIBRARIES( tmp)
 
 
 ADD_EXECUTABLE(string  src/string.cpp )
