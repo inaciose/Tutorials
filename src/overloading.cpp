@@ -24,15 +24,31 @@ money(double value)
     data=new double [10];
     std::cout<< "constructor money with value: "<< this->value<<std::endl;
 }
+
+
 //Rule of three (C++ programming)
 
-money(const money &m)
+//first implementation
+money(const money &other)
 {
+    //other is pointing to the object that we want to copy from
    data=new double [10];
    //memcpy(dst,src)
-   memcpy(data,m.data,10 );
-   value=m.value;
+   memcpy(data,other.data,10 );
+   value=other.value;
 }
+
+//second implementation
+//money(const money &other)
+//{
+//    //other is pointing to the object that we want to copy from
+//    data=new double [10];
+//    memcpy(this, &other,sizeof(other));
+//}
+
+
+//if we want disable copying
+//money(const money &other)= delete;
 
 ~money()
 {
@@ -86,7 +102,7 @@ int main()
 
 /////////////////////////// = overloading (deep copy) ///////////////////////
 
-    std::cout<< "deep copy:"<< money1<<std::endl;
+    std::cout<< "===========================deep copy======================"<<std::endl;
     money  money3(3);
     money3.data[0]=1.0;
     money  money4=money3;

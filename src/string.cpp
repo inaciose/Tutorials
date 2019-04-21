@@ -45,6 +45,37 @@ void stringNumberConversion()
 
 void cStyle()
 {
+/*
+ A string is a sequence of chars, strings are typically represented as char arrays that have a null terminator.
+'\0' character (which has ASCII code 0).
+Since C-style strings are arrays, you can use the [] operator to change individual characters in the string:
+*/
+
+    char szString[] = "string";
+    szString[1] = 'p';
+    std::cout << szString<<std::endl;
+
+
+//but the fowllowing code is wrong
+//	szString = "rope";
+
+    char szSource[] = "Copy this!";
+    char szDest[50];
+    strcpy(szDest, szSource);
+
+
+
+    char const* p2 = "Mary";
+    // not allowed.
+    //*p2 = 'C';
+    p2 = "Margareth";  // allowed
+
+    //char * const p1 = "John";
+    //*p1 = 'C'; // allowed
+    // not allowed
+    //p1 = "Margarth";
+
+
 
     char * cstr, *p;
     std::string str ("Please split this phrase into tokens");
@@ -67,7 +98,7 @@ int main()
 {
 
     //stringNumberConversion();
-    splitingByDelimiter();
+    //splitingByDelimiter();
 
 	return 0;
 }
