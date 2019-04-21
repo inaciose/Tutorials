@@ -86,6 +86,8 @@ set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 #TARGET_LINK_LIBRARIES(glog_example ${GFLAGS_LIBRARIES} ${CERES_LIBRARIES} gflags)
 
 
+ADD_EXECUTABLE(tmp  src/tmp.cpp )
+TARGET_LINK_LIBRARIES( tmp)
 
 
 ADD_EXECUTABLE(string  src/string.cpp )
@@ -95,4 +97,10 @@ ADD_EXECUTABLE(overloading  src/overloading.cpp )
 TARGET_LINK_LIBRARIES( overloading)
 
 
+
+ADD_EXECUTABLE(cpp_exception_handling  src/hackerrank/cpp_exception_handling.cpp)
+TARGET_LINK_LIBRARIES( cpp_exception_handling)
+
+ADD_EXECUTABLE(errors_memory_exception  src/errors_memory_exception.cpp)
+TARGET_LINK_LIBRARIES( errors_memory_exception)
 
