@@ -89,6 +89,8 @@ set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 ADD_EXECUTABLE(tmp  src/tmp.cpp )
 TARGET_LINK_LIBRARIES( tmp)
 
+ADD_EXECUTABLE(pointers  src/pointers.cpp )
+TARGET_LINK_LIBRARIES( pointers)
 
 ADD_EXECUTABLE(string  src/string.cpp )
 TARGET_LINK_LIBRARIES( string)
@@ -96,11 +98,53 @@ TARGET_LINK_LIBRARIES( string)
 ADD_EXECUTABLE(overloading  src/overloading.cpp )
 TARGET_LINK_LIBRARIES( overloading)
 
+ADD_EXECUTABLE(exception_handling  src/exception_handling.cpp)
+TARGET_LINK_LIBRARIES( exception_handling)
 
+
+
+ADD_EXECUTABLE(heap_vs_stackt  src/heap_vs_stackt.cpp)
+TARGET_LINK_LIBRARIES(heap_vs_stackt)
+
+ADD_EXECUTABLE(assert  src/assert.cpp)
+TARGET_LINK_LIBRARIES(assert)
+
+ADD_EXECUTABLE(return_vs_exit  src/return_vs_exit.cpp)
+TARGET_LINK_LIBRARIES(return_vs_exit)
+
+ADD_EXECUTABLE(rvalue_lvalue  src/rvalue_lvalue.cpp)
+TARGET_LINK_LIBRARIES(rvalue_lvalue)
+
+
+
+ADD_EXECUTABLE(template_specialization  src/template_specialization.cpp)
+TARGET_LINK_LIBRARIES(template_specialization)
+
+ADD_EXECUTABLE(data_structure  src/data_structure.cpp)
+TARGET_LINK_LIBRARIES(data_structure)
+
+ADD_EXECUTABLE(primitive_data_types_numerical_limits_accuracy  src/primitive_data_types_numerical_limits_accuracy.cpp)
+TARGET_LINK_LIBRARIES(primitive_data_types_numerical_limits_accuracy)
+
+ADD_EXECUTABLE(arrays  src/arrays.cpp)
+TARGET_LINK_LIBRARIES(arrays)
+
+
+ADD_EXECUTABLE(data_type_info  src/data_type_info.cpp)
+TARGET_LINK_LIBRARIES(data_type_info)
+
+ADD_EXECUTABLE(virtual_function  src/virtual_function.cpp)
+TARGET_LINK_LIBRARIES(virtual_function)
+
+
+ADD_EXECUTABLE(exceptional_server  src/hackerrank/exceptional_server.cpp)
+TARGET_LINK_LIBRARIES(exceptional_server)
+
+ADD_EXECUTABLE(class_template_specialization  src/hackerrank/class_template_specialization.cpp)
+TARGET_LINK_LIBRARIES(class_template_specialization)
+
+ADD_EXECUTABLE(parser  src/hackerrank/parser.cpp)
+TARGET_LINK_LIBRARIES(parser)
 
 ADD_EXECUTABLE(cpp_exception_handling  src/hackerrank/cpp_exception_handling.cpp)
 TARGET_LINK_LIBRARIES( cpp_exception_handling)
-
-ADD_EXECUTABLE(errors_memory_exception  src/errors_memory_exception.cpp)
-TARGET_LINK_LIBRARIES( errors_memory_exception)
-

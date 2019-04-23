@@ -221,6 +221,13 @@ int main()
     //sharedPointerExample();
     //unique_pointerExample();
     //weak_pointerExample();
+    //const int & r=5;
+    const int & r=5;
+    int x;
+    //std::cout<< typeid(x)<<std::endl ;
+
+    short int short_int;
+    std::cout <<typeid(r).name()<<std::endl;
 }
 
 
