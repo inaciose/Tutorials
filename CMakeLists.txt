@@ -178,4 +178,11 @@ ADD_EXECUTABLE(virtual_function_abstract_class src/class/virtual_function_abstra
 TARGET_LINK_LIBRARIES(virtual_function_abstract_class)
 
 
+ADD_EXECUTABLE(switch_case src/switch_case.cpp)
+TARGET_LINK_LIBRARIES(switch_case)
+
+ADD_EXECUTABLE(multiple_inheritance_polymorphism src/class/multiple_inheritance_polymorphism.cpp)
+TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
+
+
 

@@ -16,7 +16,7 @@ public:
     }
     void print()
     {
-        std::cout<<"no id has been set" <<std::endl;
+        std::cout<<"print from base" <<std::endl;
     }
 };
 
@@ -30,11 +30,17 @@ public:
         std::cout<<"info from derived" <<std::endl;
 
     }
-    using base::print;
+
     void print(int id)
     {
-        std::cout<<"the given id is: "<<id <<std::endl;
+        std::cout<<"print from derived, the given id is: "<<id <<std::endl;
     }
+
+    void print()
+    {
+        std::cout<<"the print func from derived"<<std::endl;
+    }
+
 };
 
 
@@ -43,12 +49,17 @@ int main()
     base baseObject;
     derived derivedObject;
 
-
+    std::cout<<"===========info() from base===========" <<std::endl;
     baseObject.info();
+    std::cout<<"===========print() from base===========" <<std::endl;
     baseObject.print();
-
-
+    std::cout<<"===========info() in the drived class has shadowed the base info()===========" <<std::endl;
     derivedObject.info();
+    std::cout<<"===========calling the shadowed method (print() from base) in derived class===========" <<std::endl;
+    derivedObject.base::print();
+    std::cout<<"===========calling the print() which shadows print() from base class===========" <<std::endl;
     derivedObject.print();
+    std::cout<<"===========calling the print() which overloads the print() from base class===========" <<std::endl;
     derivedObject.print(10);
+
 }
