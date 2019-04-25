@@ -1,7 +1,8 @@
 #include <algorithm>
 #include <iostream>
 #include <memory>
-
+#include <cassert> // for assert()
+#include <iterator>
 class node
 {
 public:
@@ -124,6 +125,17 @@ void binaryHeapExample()
 void populateTree(std::shared_ptr<node> rootNodePtr)
 {
 
+/*
+                   -1
+                  /   \
+                3       7
+              /  \    /
+             4    1  5
+
+
+*/
+
+
     rootNodePtr->data=-1;
     std::shared_ptr<node>  leftNodePtr,rightNodePtr;
     std::shared_ptr<node>  leftNode1stKidPtr,leftNode2ndtKidPtr, rightNode1stKidPtr;
@@ -160,7 +172,7 @@ void DFS(std::shared_ptr<node> rootNode)
         DFS(n);
 }
 
-
+//Level Order Tree Traversal, Breadth first traversal
 void BFS(std::shared_ptr<node> rootNode)
 {
 
@@ -171,7 +183,76 @@ void BFS(std::shared_ptr<node> rootNode)
         BFS(n);
 }
 
+template <typename T>
+void permutation(std::vector<T> v)
+{
+    std::sort(v.begin(), v.end());
+    do {
+        std::copy(v.begin(), v.end(), std::ostream_iterator<T>(std::cout, " "));
+        std::cout << std::endl;
+    } while (std::next_permutation(v.begin(), v.end()));
+}
+
+
+bool increase(std::vector<bool>& bs)
+{
+    for (std::size_t i = 0; i != bs.size(); ++i) {
+        bs[i] = !bs[i];
+        if (bs[i] == true) {
+            return true;
+        }
+    }
+    return false; // overflow
+}
+
+template <typename T>
+void powerSet(const std::vector<T>& v)
+{
+    std::vector<bool> bitset(v.size());
+
+    do {
+        for (std::size_t i = 0; i != v.size(); ++i) {
+            if (bitset[i]) {
+                std::cout << v[i] << " ";
+            }
+        }
+        std::cout << std::endl;
+    } while (increase(bitset));
+}
+
+
+
+template <typename T>
+void combination(const std::vector<T>& v, std::size_t count)
+{
+    assert(count <= v.size());
+    std::vector<bool> bitset(v.size() - count, 0);
+    bitset.resize(v.size(), 1);
+
+    do {
+        for (std::size_t i = 0; i != v.size(); ++i) {
+            if (bitset[i]) {
+                std::cout << v[i] << " ";
+            }
+        }
+        std::cout << std::endl;
+    } while (std::next_permutation(bitset.begin(), bitset.end()));
+}
+
 int main()
 {
+//    std::shared_ptr<node> tree(new node);
+//    populateTree(tree);
+//    DFS(tree);
 
+    std::vector<char> vc{ 'A', 'B', 'C', 'D' };
+    std::vector<char> path;
+    std::vector<bool> visited(4, false);
+    std::cout << "\n------PERMUTATION----------\n";
+    permutation(vc);
+    std::cout << "\n------COMBINATION----------\n";
+    combination(vc, 3);
+    std::cout << "\n------POWERSET-------------\n";
+    powerSet(vc);
+    return 0;
 }

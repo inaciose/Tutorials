@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations")
-set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE DEBUG)
+#set(CMAKE_BUILD_TYPE RELEASE)
 
 project(Tutorials)
 
@@ -21,10 +22,10 @@ set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 
 
 #C++ 14
+
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-
 
 #Finding Memory leaking, Stack and Heap overflow
 set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
@@ -94,8 +95,8 @@ TARGET_LINK_LIBRARIES( pointers)
 ADD_EXECUTABLE(string  src/string.cpp )
 TARGET_LINK_LIBRARIES( string)
 
-ADD_EXECUTABLE(overloading  src/overloading.cpp )
-TARGET_LINK_LIBRARIES( overloading)
+ADD_EXECUTABLE(operator_overloading  src/operator_overloading.cpp )
+TARGET_LINK_LIBRARIES( operator_overloading)
 
 ADD_EXECUTABLE(exception_handling  src/exception_handling.cpp)
 TARGET_LINK_LIBRARIES( exception_handling)
@@ -128,7 +129,53 @@ TARGET_LINK_LIBRARIES(arrays)
 ADD_EXECUTABLE(data_type_info  src/data_type_info.cpp)
 TARGET_LINK_LIBRARIES(data_type_info)
 
-ADD_EXECUTABLE(virtual_function  src/virtual_function.cpp)
-TARGET_LINK_LIBRARIES(virtual_function)
+
+
+
+
+
+ADD_EXECUTABLE(dynamic_memory_allocation src/dynamic_memory_allocation.cpp)
+TARGET_LINK_LIBRARIES(dynamic_memory_allocation)
+
+
+#ADD_LIBRARY(add MODULE src/add.cpp)
+ADD_EXECUTABLE(loadeding_libraries src/loadeding_libraries.cpp )
+TARGET_LINK_LIBRARIES(loadeding_libraries dl)
+
+ADD_EXECUTABLE(template src/template.cpp )
+TARGET_LINK_LIBRARIES(template)
+
+
+ADD_DEFINITIONS(-DLOGING=0)
+ADD_EXECUTABLE(macro src/macro.cpp)
+TARGET_LINK_LIBRARIES(macro)
+
+ADD_EXECUTABLE(inline_functions src/inline_functions.cpp)
+TARGET_LINK_LIBRARIES(inline_functions)
+
+
+ADD_EXECUTABLE(align src/align.cpp)
+TARGET_LINK_LIBRARIES(align)
+
+
+ADD_EXECUTABLE(non_modifing_algorithm src/non_modifing_algorithm.cpp)
+TARGET_LINK_LIBRARIES(non_modifing_algorithm)
+
+ADD_EXECUTABLE(map src/map.cpp)
+TARGET_LINK_LIBRARIES(map)
+
+ADD_EXECUTABLE(vector src/vector.cpp)
+TARGET_LINK_LIBRARIES(vector)
+
+ADD_EXECUTABLE(shadowing src/class/shadowing.cpp)
+TARGET_LINK_LIBRARIES(shadowing)
+
+ADD_EXECUTABLE(protected_friend_class_function src/class/protected_friend_class_function.cpp)
+TARGET_LINK_LIBRARIES(protected_friend_class_function)
+
+
+ADD_EXECUTABLE(virtual_function_abstract_class src/class/virtual_function_abstract_class.cpp)
+TARGET_LINK_LIBRARIES(virtual_function_abstract_class)
+
 
 

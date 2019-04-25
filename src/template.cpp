@@ -111,11 +111,15 @@ I)Pointers, References and Arrays with Templates
 
 //6)Class Templates
 
-	/*
-	More often, you would design and use class templates, than function templates.
-	In general, you use a class template to define an abstract type whose behavior is generic and is reusable, adaptable.
-	like data-structures: linked-lists, stacks, queues and similar containers.
-	*/
+/*
+When working with templates, you need to have the full definition in the header.
+In practice it means implementation inside .h file.
+
+http://www.bgsu.edu/departments/compsci/docs/templates.html
+
+There is never an implementation file (*.cpp) for a template class.
+All of the member functions should be declared in the header file
+*/
 
 	template<class T>
 	class Item
@@ -173,8 +177,7 @@ T Add(T n1, T n2)
 }
 
 
-int TemplatesFunction()
-//int main()
+int main()
 {
 //	For the first call of GetAverage, where IntArray is passed, compiler would instantiate this function as:
 //	double GetAverage(int tArray[], int nElements);

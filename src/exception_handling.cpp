@@ -5,15 +5,44 @@
 #include <bitset>
 #include <vector>
 #include <stdexcept>
-struct Foo { virtual ~Foo() {} };
-struct Bar { virtual ~Bar() {} };
+
+
+//double division(int a, int b)
+//{
+//   if( b == 0 )
+//   {
+//      throw "Division by zero condition!";
+//   }
+//   return (a/b);
+//}
+
+////struct S { // The type has to be polymorphic
+////    virtual void f();
+////};
+
+
+//void exceptionHandlingExample()
+//{
+//    int x = 50;
+//    int y = 0;
+//    double z = 0;
+
+//    try
+//    {
+//        z = division(x, y);
+//        std::cout << z << std::endl;
+//    } catch (const char* msg)
+//    {
+//        std::cerr << msg << std::endl;
+//    }
+//}
 
 /*
-exception handling
+exception handling has the following form:
 
 try
 {
-    ...
+    some code
 }
 catch (Exception e)
 {
@@ -46,34 +75,8 @@ std::exception
 
 */
 
-double division(int a, int b)
-{
-   if( b == 0 ) {
-      throw "Division by zero condition!";
-   }
-   return (a/b);
-}
-
-struct S { // The type has to be polymorphic
-    virtual void f();
-};
-
-
-void exceptionHandlingExample()
-{
-    int x = 50;
-    int y = 0;
-    double z = 0;
-
-    try
-    {
-        z = division(x, y);
-        std::cout << z << std::endl;
-    } catch (const char* msg)
-    {
-        std::cerr << msg << std::endl;
-    }
-}
+struct Foo { virtual ~Foo() {} };
+struct Bar { virtual ~Bar() {} };
 
 
 void bad_allocExample()
@@ -81,10 +84,11 @@ void bad_allocExample()
     try
     {
         while (true)
+        {
+            new int[100000000ul];
+        }
+    } catch (const std::bad_alloc& e)
     {
-        new int[100000000ul];
-    }
-    } catch (const std::bad_alloc& e) {
         std::cout << "Allocation failed: " << e.what() << '\n';
     }
 }
@@ -261,5 +265,6 @@ int main( int argc, char *argv[] )
     //stackBufferOverflow();
     //heapBufferOverflow();
     //exceptionHandlingExample();
-    customExceptionExample();
+    //customExceptionExample();
+    invalid_argumentExample();
 }

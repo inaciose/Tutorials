@@ -1,5 +1,6 @@
 #include <iostream>
 #include <map>
+#include <algorithm>
 
 
 
@@ -47,6 +48,12 @@ int main ()
         std::cout<<"item not found" <<std::endl;
     }
 
+//since C++17
+//for (auto&& [first,second] : items_quantiy)
+//{
+//    std::cout<<first <<std::endl;
+//    std::cout<< second<<std::endl;
+//}
 
     
     

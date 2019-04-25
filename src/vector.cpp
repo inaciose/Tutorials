@@ -36,6 +36,18 @@ void cStyleArrayToVecExample()
     std::cout<< "c style array to vector second way"<<std::endl;
     std::vector<int> vec2FromArray(numbers, numbers+ sizeof(numbers)/sizeof(numbers[0]));
     printVector(vec2FromArray);
+
+
+    //when we don't know the type of array elements
+    int x[]={1,2,3};
+    //First method
+    using arrElemType = std::remove_reference<decltype( *x )>::type;
+
+    //Secodn Method
+    //typedef std::remove_reference<decltype( *x )>::type arrElemType;
+    std::vector<arrElemType> z(std::begin(x),std::end(x));
+    printVector(z);
+
 }
 
 void vecTocStyleArrayExample()

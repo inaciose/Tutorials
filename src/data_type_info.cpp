@@ -6,7 +6,7 @@
 #endif
 #include <memory>
 #include <cstdlib>
-
+#include <vector>
 
 template <class T> std::string type_name()
 {
@@ -76,6 +76,20 @@ void decltypeExample()
     int i = 5;
     decltype(i) j = i * 2;
     std::cout<<j<<std::endl;
+}
+
+
+//determine the type of an array element
+void decltypeArrayExample()
+{
+    int x[]={1,2,3};
+
+    //First method
+    using arrElemType = std::remove_reference<decltype( *x )>::type;
+
+    //Secodn Method
+    //typedef std::remove_reference<decltype( *x )>::type arrElemType;
+    std::vector<arrElemType> z(std::begin(x),std::end(x));
 }
 
 
