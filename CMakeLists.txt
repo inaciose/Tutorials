@@ -161,8 +161,6 @@ TARGET_LINK_LIBRARIES(align)
 ADD_EXECUTABLE(non_modifing_algorithm src/non_modifing_algorithm.cpp)
 TARGET_LINK_LIBRARIES(non_modifing_algorithm)
 
-ADD_EXECUTABLE(map src/map.cpp)
-TARGET_LINK_LIBRARIES(map)
 
 ADD_EXECUTABLE(vector src/vector.cpp)
 TARGET_LINK_LIBRARIES(vector)
@@ -181,8 +179,21 @@ TARGET_LINK_LIBRARIES(virtual_function_abstract_class)
 ADD_EXECUTABLE(switch_case src/switch_case.cpp)
 TARGET_LINK_LIBRARIES(switch_case)
 
+ADD_EXECUTABLE(set_map_pair src/set_map_pair.cpp)
+TARGET_LINK_LIBRARIES(set_map_pair)
+
 ADD_EXECUTABLE(multiple_inheritance_polymorphism src/class/multiple_inheritance_polymorphism.cpp)
 TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
 
+ADD_EXECUTABLE(heap src/heap.cpp)
+TARGET_LINK_LIBRARIES(heap)
 
 
+
+
+IF(testing_enabled)
+    ADD_SUBDIRECTORY(tests)
+endif()
+
+ADD_SUBDIRECTORY(src/temp)
+ADD_SUBDIRECTORY(src/hackerrank)

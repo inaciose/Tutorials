@@ -10,6 +10,7 @@
 #include <forward_list>
 
 
+
 bool IsOdd (int i) { return (i%2)==1; }
 
 void unique()
