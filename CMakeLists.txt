@@ -33,12 +33,6 @@ set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 
 
 ######################### How to cpack create deb file#########################
-
-#FIND_PACKAGE(VTK REQUIRED)
-#INCLUDE(${VTK_USE_FILE})
- 
-#ADD_EXECUTABLE(DistanceBetweenPoints src/DistanceBetweenPoints.cpp)
-#INSTALL(TARGETS DistanceBetweenPoints DESTINATION distance)
  
 #SET(CPACK_GENERATOR "DEB")
 #SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "David Doria") #required
@@ -188,12 +182,3 @@ TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
 ADD_EXECUTABLE(heap src/heap.cpp)
 TARGET_LINK_LIBRARIES(heap)
 
-
-
-
-IF(testing_enabled)
-    ADD_SUBDIRECTORY(tests)
-endif()
-
-ADD_SUBDIRECTORY(src/temp)
-ADD_SUBDIRECTORY(src/hackerrank)
