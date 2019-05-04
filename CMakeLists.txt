@@ -193,9 +193,4 @@ TARGET_LINK_LIBRARIES(cast)
 ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
 TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
 
-IF(testing_enabled)
-    ADD_SUBDIRECTORY(tests)
-endif()
 
-ADD_SUBDIRECTORY(src/temp)
-ADD_SUBDIRECTORY(src/hackerrank)
