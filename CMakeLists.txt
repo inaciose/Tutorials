@@ -193,4 +193,17 @@ TARGET_LINK_LIBRARIES(cast)
 ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
 TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
 
+IF(testing_enabled)
+	ADD_SUBDIRECTORY(tests)
+ENDIF()
+
+IF(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/temp")
+	ADD_SUBDIRECTORY(src/temp)
+ENDIF()
+
+IF(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/src/hackerrank")
+	ADD_SUBDIRECTORY(src/hackerrank)
+ENDIF()
+
+
 
