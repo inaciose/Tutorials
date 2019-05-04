@@ -28,8 +28,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 #Finding Memory leaking, Stack and Heap overflow
-set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
-set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
+#set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
+#set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 
 
 ######################### How to cpack create deb file#########################
@@ -107,9 +107,6 @@ TARGET_LINK_LIBRARIES(return_vs_exit)
 ADD_EXECUTABLE(rvalue_lvalue  src/rvalue_lvalue.cpp)
 TARGET_LINK_LIBRARIES(rvalue_lvalue)
 
-ADD_EXECUTABLE(template_specialization  src/template_specialization.cpp)
-TARGET_LINK_LIBRARIES(template_specialization)
-
 ADD_EXECUTABLE(data_structure  src/data_structure.cpp)
 TARGET_LINK_LIBRARIES(data_structure)
 
@@ -159,6 +156,14 @@ TARGET_LINK_LIBRARIES(non_modifing_algorithm)
 ADD_EXECUTABLE(vector src/vector.cpp)
 TARGET_LINK_LIBRARIES(vector)
 
+ADD_EXECUTABLE(variadic_templates src/variadic_templates.cpp)
+TARGET_LINK_LIBRARIES(variadic_templates)
+
+
+
+ADD_EXECUTABLE(enum src/enum.cpp)
+TARGET_LINK_LIBRARIES(enum)
+
 ADD_EXECUTABLE(shadowing src/class/shadowing.cpp)
 TARGET_LINK_LIBRARIES(shadowing)
 
@@ -182,3 +187,15 @@ TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
 ADD_EXECUTABLE(heap src/heap.cpp)
 TARGET_LINK_LIBRARIES(heap)
 
+ADD_EXECUTABLE(cast src/cast.cpp)
+TARGET_LINK_LIBRARIES(cast)
+
+ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
+TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
+
+IF(testing_enabled)
+    ADD_SUBDIRECTORY(tests)
+endif()
+
+ADD_SUBDIRECTORY(src/temp)
+ADD_SUBDIRECTORY(src/hackerrank)
