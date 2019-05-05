@@ -44,6 +44,13 @@ int exitExample()
 
 }
 
+void abortExample()
+{
+/*     
+    abort sends a SIGABRT signal, exit just closes the application performing normal cleanup.
+ */ 
+}
+
 int main(int argc, char *argv[])
 {
 

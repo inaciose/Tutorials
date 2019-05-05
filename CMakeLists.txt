@@ -101,8 +101,8 @@ TARGET_LINK_LIBRARIES(heap_vs_stackt)
 ADD_EXECUTABLE(assert  src/assert.cpp)
 TARGET_LINK_LIBRARIES(assert)
 
-ADD_EXECUTABLE(return_vs_exit  src/return_vs_exit.cpp)
-TARGET_LINK_LIBRARIES(return_vs_exit)
+ADD_EXECUTABLE(return_abort_exit  src/return_abort_exit.cpp)
+TARGET_LINK_LIBRARIES(return_abort_exit)
 
 ADD_EXECUTABLE(rvalue_lvalue  src/rvalue_lvalue.cpp)
 TARGET_LINK_LIBRARIES(rvalue_lvalue)
@@ -192,6 +192,21 @@ TARGET_LINK_LIBRARIES(cast)
 
 ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
 TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
+
+
+
+ADD_EXECUTABLE(signals src/signals.cpp)
+TARGET_LINK_LIBRARIES(signals)
+
+ADD_EXECUTABLE(error_handling src/error_handling.cpp)
+TARGET_LINK_LIBRARIES(error_handling)
+
+ADD_EXECUTABLE(bitwise_operations src/bitwise_operations.cpp)
+TARGET_LINK_LIBRARIES(bitwise_operations)
+
+ADD_EXECUTABLE(bitset src/bitset.cpp)
+TARGET_LINK_LIBRARIES(bitset)
+
 
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)
