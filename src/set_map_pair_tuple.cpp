@@ -22,6 +22,11 @@ then you would need an std::map<std::string,int>. If you don't need to associate
  it does not make sense to have the int that is unnecessary.
 */
 
+std::tuple<int, double, std::string> tupleExample()
+{
+    return std::make_tuple(1,2.3, "Hello");
+}
+
 void pairExample()
 {
     //std::make_pair()
@@ -281,8 +286,13 @@ int main ()
 //     setExample();
 //     setExample();
 //     unordered_setExample();
-    setFromUserDefinedTypeExample();
-     return 0;
+//    setFromUserDefinedTypeExample();
+    
+    int i;
+    double d; 
+    std::string s;
+    std::tie(i,d,s)=tupleExample();
+    return 0;
 }
 
 

@@ -12,7 +12,8 @@
 using namespace std; 
 int main()
 {   
-    const int M=32;
+    const int M=sizeof(int)*8;
+    
     // default constructor initializes with all bits 0 
     bitset<M> bset1; 
   

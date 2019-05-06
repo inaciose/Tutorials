@@ -11,18 +11,16 @@ INCLUDE(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
 CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
 IF(COMPILER_SUPPORTS_CXX11)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 ELSEIF(COMPILER_SUPPORTS_CXX0X)
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -pthread")
 ELSE()
   MESSAGE(ERROR "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 ENDIF()
 
-set(CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 
 
 #C++ 14
-
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -120,11 +118,6 @@ TARGET_LINK_LIBRARIES(arrays)
 ADD_EXECUTABLE(data_type_info  src/data_type_info.cpp)
 TARGET_LINK_LIBRARIES(data_type_info)
 
-
-
-
-
-
 ADD_EXECUTABLE(dynamic_memory_allocation src/dynamic_memory_allocation.cpp)
 TARGET_LINK_LIBRARIES(dynamic_memory_allocation)
 
@@ -178,8 +171,8 @@ TARGET_LINK_LIBRARIES(virtual_function_abstract_class)
 ADD_EXECUTABLE(switch_case src/switch_case.cpp)
 TARGET_LINK_LIBRARIES(switch_case)
 
-ADD_EXECUTABLE(set_map_pair src/set_map_pair.cpp)
-TARGET_LINK_LIBRARIES(set_map_pair)
+ADD_EXECUTABLE(set_map_pair_tuple src/set_map_pair_tuple.cpp)
+TARGET_LINK_LIBRARIES(set_map_pair_tuple)
 
 ADD_EXECUTABLE(multiple_inheritance_polymorphism src/class/multiple_inheritance_polymorphism.cpp)
 TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
@@ -206,6 +199,22 @@ TARGET_LINK_LIBRARIES(bitwise_operations)
 
 ADD_EXECUTABLE(bitset src/bitset.cpp)
 TARGET_LINK_LIBRARIES(bitset)
+
+ADD_EXECUTABLE(multithreading src/multithreading.cpp)
+TARGET_LINK_LIBRARIES(multithreading)
+
+ADD_EXECUTABLE(function_pointer src/function_pointer.cpp)
+TARGET_LINK_LIBRARIES(function_pointer)
+
+ADD_EXECUTABLE(bind src/bind.cpp)
+TARGET_LINK_LIBRARIES(bind)
+
+ADD_EXECUTABLE(function src/function.cpp)
+TARGET_LINK_LIBRARIES(function)
+
+ADD_EXECUTABLE(lambda src/lambda.cpp)
+TARGET_LINK_LIBRARIES(lambda)
+
 
 
 IF(testing_enabled)
