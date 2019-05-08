@@ -215,6 +215,13 @@ TARGET_LINK_LIBRARIES(function)
 ADD_EXECUTABLE(lambda src/lambda.cpp)
 TARGET_LINK_LIBRARIES(lambda)
 
+ADD_EXECUTABLE(unions src/unions.cpp)
+TARGET_LINK_LIBRARIES(unions)
+
+
+ADD_EXECUTABLE(timers src/timers.cpp)
+TARGET_LINK_LIBRARIES(timers.cpp)
+
 
 
 IF(testing_enabled)

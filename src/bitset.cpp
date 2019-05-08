@@ -90,7 +90,9 @@ int main()
   
     // Converting decimal number to binary by using bitset 
     int num = 100; 
-    cout << "\nDecimal number: " << num 
-         << "  Binary equivalent: " << bitset<8>(num); 
+    bitset<8> set9(num);
+    
+    
+    cout << "\nDecimal number: " << set9.to_ulong()<< "  Binary equivalent: " << set9<<endl; 
   
 }

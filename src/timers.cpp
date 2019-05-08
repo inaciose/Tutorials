@@ -12,7 +12,7 @@
 using namespace std;
 
 //int main()
-int Timersmain()
+int main()
 {
 /*  get start time  */
     time_t  start_time = clock();
