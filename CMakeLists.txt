@@ -78,9 +78,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 #ADD_EXECUTABLE(glog_example src/glog_example.cpp)
 #TARGET_LINK_LIBRARIES(glog_example ${GFLAGS_LIBRARIES} ${CERES_LIBRARIES} gflags)
 
-
-
-
 ADD_EXECUTABLE(pointers  src/pointers.cpp )
 TARGET_LINK_LIBRARIES( pointers)
 
@@ -105,9 +102,6 @@ TARGET_LINK_LIBRARIES(return_abort_exit)
 ADD_EXECUTABLE(rvalue_lvalue  src/rvalue_lvalue.cpp)
 TARGET_LINK_LIBRARIES(rvalue_lvalue)
 
-ADD_EXECUTABLE(data_structure  src/data_structure.cpp)
-TARGET_LINK_LIBRARIES(data_structure)
-
 ADD_EXECUTABLE(primitive_data_types_numerical_limits_accuracy  src/primitive_data_types_numerical_limits_accuracy.cpp)
 TARGET_LINK_LIBRARIES(primitive_data_types_numerical_limits_accuracy)
 
@@ -121,14 +115,12 @@ TARGET_LINK_LIBRARIES(data_type_info)
 ADD_EXECUTABLE(dynamic_memory_allocation src/dynamic_memory_allocation.cpp)
 TARGET_LINK_LIBRARIES(dynamic_memory_allocation)
 
-
 #ADD_LIBRARY(add MODULE src/add.cpp)
 ADD_EXECUTABLE(loadeding_libraries src/loadeding_libraries.cpp )
 TARGET_LINK_LIBRARIES(loadeding_libraries dl)
 
 ADD_EXECUTABLE(template src/template.cpp )
 TARGET_LINK_LIBRARIES(template)
-
 
 ADD_DEFINITIONS(-DLOGING=0)
 ADD_EXECUTABLE(macro src/macro.cpp)
@@ -137,22 +129,17 @@ TARGET_LINK_LIBRARIES(macro)
 ADD_EXECUTABLE(inline_functions src/inline_functions.cpp)
 TARGET_LINK_LIBRARIES(inline_functions)
 
-
 ADD_EXECUTABLE(align src/align.cpp)
 TARGET_LINK_LIBRARIES(align)
 
-
 ADD_EXECUTABLE(non_modifing_algorithm src/non_modifing_algorithm.cpp)
 TARGET_LINK_LIBRARIES(non_modifing_algorithm)
-
 
 ADD_EXECUTABLE(vector src/vector.cpp)
 TARGET_LINK_LIBRARIES(vector)
 
 ADD_EXECUTABLE(variadic_templates src/variadic_templates.cpp)
 TARGET_LINK_LIBRARIES(variadic_templates)
-
-
 
 ADD_EXECUTABLE(enum src/enum.cpp)
 TARGET_LINK_LIBRARIES(enum)
@@ -163,10 +150,8 @@ TARGET_LINK_LIBRARIES(shadowing)
 ADD_EXECUTABLE(protected_friend_class_function src/class/protected_friend_class_function.cpp)
 TARGET_LINK_LIBRARIES(protected_friend_class_function)
 
-
 ADD_EXECUTABLE(virtual_function_abstract_class src/class/virtual_function_abstract_class.cpp)
 TARGET_LINK_LIBRARIES(virtual_function_abstract_class)
-
 
 ADD_EXECUTABLE(switch_case src/switch_case.cpp)
 TARGET_LINK_LIBRARIES(switch_case)
@@ -185,8 +170,6 @@ TARGET_LINK_LIBRARIES(cast)
 
 ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
 TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
-
-
 
 ADD_EXECUTABLE(signals src/signals.cpp)
 TARGET_LINK_LIBRARIES(signals)
@@ -218,9 +201,23 @@ TARGET_LINK_LIBRARIES(lambda)
 ADD_EXECUTABLE(unions src/unions.cpp)
 TARGET_LINK_LIBRARIES(unions)
 
-
 ADD_EXECUTABLE(timers src/timers.cpp)
-TARGET_LINK_LIBRARIES(timers.cpp)
+TARGET_LINK_LIBRARIES(timers)
+
+
+#########################data structure and algorithm#########################
+ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
+TARGET_LINK_LIBRARIES(hash_table)
+
+ADD_EXECUTABLE(adjacency_list  src/data_structure_algorithm/adjacency_list.cpp)
+TARGET_LINK_LIBRARIES(adjacency_list)
+
+ADD_EXECUTABLE(data_structure  src/data_structure_algorithm/data_structure.cpp)
+TARGET_LINK_LIBRARIES(data_structure)
+
+ADD_EXECUTABLE(dynamic_programming  src/data_structure_algorithm/dynamic_programming.cpp)
+TARGET_LINK_LIBRARIES(dynamic_programming)
+
 
 
 
