@@ -6,7 +6,9 @@
 
 #include <chrono>//for  sleep_for function
 #include<mutex>
+#include <condition_variable>
 #include <fstream>
+#include <queue>
 
 /*
 http://www.yolinux.com/TUTORIALS/LinuxTutorialPosixThreads.html
@@ -205,9 +207,26 @@ void processTree()
     //pstree -p PID    
 }
 
-////////////////////////////////////Race Condition, Mutex//////////////////////////////
+////////////////////////////////////Race Condition//////////////////////////////
 /*Example 1
+https://thispointer.com//c11-multithreading-part-4-data-sharing-and-race-conditions/
 
+The following problem happens in the case for example:
+
+thread1                                      thread2
+load walletObject.money into memory                
+                                             load walletObject.money into memory
+                                             
+increaseMoney is being called
+                                             increaseMoney is being called
+
+update walletObject.money from CPU register
+
+                                             update walletObject.money from CPU register
+
+let say "walletObject.money" was 10. 10 will be loaded. Both thread increase the value
+to 11, while it should be increased to 11 and then 12. so the correct value is 12 while we write back into memory 11, which wrong.
+                                             
 
 */
 class wallet 
@@ -251,7 +270,7 @@ void racingProblemExample()
         }
     }
 }
-
+///////////////////////////////////////Mutex////////////////////////////////
 class walletMutex 
 {
 public:
@@ -369,7 +388,7 @@ void sharedResourceRacingFixedUsingMutex()
 
 //Example 3
 /*
-If anything goes wrong during the mutex lock, like an exception, the code will be locked for ever so we often use gaurd.
+If anything goes wrong during the mutex lock, like an exception, the code will be locked for ever so we often use guard.
 Whenever guard goes out of scope, the mutex will be unlocked
 
 
@@ -388,7 +407,7 @@ public:
     }
     
     void sharedPrinter(int i)
-    {   std::lock_guard<std::mutex> gaurd(mutex);
+    {   std::lock_guard<std::mutex> guard(mutex);
         fileObj << i<<"\n";
         
     }
@@ -409,7 +428,7 @@ void function1Log(LogFile &log)
     }
 }
 
-void sharedResourceRacingFixedUsingGaurd()
+void sharedResourceRacingFixedUsingGuard()
 {   
     LogFile log;
     
@@ -424,6 +443,144 @@ void sharedResourceRacingFixedUsingGaurd()
     
 }
 
+/////////////////////////////////////Dead Lock///////////////////////////////
+
+std::mutex mu1, mu2;
+
+void func1DeadLock()
+{
+    mu2.lock();
+    std::cout<<"func1" <<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    mu1.lock();
+    mu2.unlock();
+    mu1.unlock();
+}
+
+void func2DeadLock()
+{
+    mu1.lock();
+    std::cout<<"func2" <<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    mu2.lock();
+    mu1.unlock();
+    mu2.unlock();
+}
+
+void deadLockExample()
+{
+    std::thread thread1(func1DeadLock);
+    std::thread thread2(func2DeadLock);
+    thread1.join();
+    thread2.join();
+}
+
+//First Solution
+void func1DeadLockSolved()
+{
+    mu1.lock();
+    std::cout<<"func1" <<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    mu2.lock();
+    mu2.unlock();
+    mu1.unlock();
+}
+
+void func2DeadLockSolved()
+{
+    
+    mu1.lock();
+    std::cout<<"func2" <<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    mu2.lock();
+    mu1.unlock();
+    mu2.unlock();
+    
+}
+
+void deadLockSolvedExample()
+{
+    std::thread thread1(func1DeadLockSolved);
+    std::thread thread2(func2DeadLockSolved);
+    thread1.join();
+    thread2.join();
+}
+
+
+//Second Solution
+void func1DeadLockGuardGuaredSolved()
+{
+    std::lock(mu1,mu2);
+    std::lock_guard<std::mutex> locker1(mu1,std::adopt_lock);
+    std::lock_guard<std::mutex> locker2(mu2,std::adopt_lock);
+    std::cout<<"func1" <<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+}
+
+void func2DeadLockGuardSolved()
+{
+    std::lock_guard<std::mutex> locker1(mu1,std::adopt_lock);
+    std::lock_guard<std::mutex> locker2(mu2,std::adopt_lock);
+    std::cout<<"func2" <<std::endl;
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+}
+
+void deadLockGuardSolvedExample()
+{
+    std::thread thread1(func1DeadLockGuardGuaredSolved);
+    std::thread thread2(func2DeadLockGuardSolved);
+    thread1.join();
+    thread2.join();
+}
+
+///////////////////////////Condition Variable/////////////////////////////
+
+std::deque<int> q;
+std::mutex mu;
+std::condition_variable cond ;
+void function_1() {
+	int count = 10;
+	while (count > 0) {
+		std::unique_lock<std::mutex> locker(mu);
+		q.push_front(count);
+		locker.unlock();
+		cond.notify_one();  // Notify one waiting thread, if there is one.
+		std::this_thread::sleep_for(std::chrono::seconds(1));
+		count--;
+	}
+}
+
+void function_2() {
+	int data = 0;
+	while ( data != 1) {
+		std::unique_lock<std::mutex> locker(mu);
+		cond.wait(locker, [](){ return !q.empty();} );  // Unlock mu and wait to be notified
+			// relock mu
+		data = q.back();
+		q.pop_back();
+		locker.unlock();
+		std::cout << "t2 got a value from t1: " << data << std::endl;
+	}
+}
+
+
+////////////////////////Future, Promise and async////////////////////////////////////
+//https://www.youtube.com/watch?v=SZQ6-pf-5Us
+
+
+/////////////////////////////////Packaged Task////////////////////////////////////
+//https://www.youtube.com/watch?v=FfbZfBk-3rI
+
+
+
+//////////////////////////////////Callable Objects//////////////////////////////////
+//https://www.youtube.com/watch?v=nU18p75u1oQ
+
+
+////////////////////////////////////Thread Safe////////////////////////////////////
+//https://www.youtube.com/watch?v=s5PCh_FaMfM
+//https://www.youtube.com/watch?v=pWTtPnwialI
+
 int main()  
 {
 //     creatingThreads();
@@ -436,35 +593,10 @@ int main()
 //     fixingRaceConditionsExample();    
 //     sharedResourceRacing();
 //     sharedResourceRacingFixedUsingMutex();
-    sharedResourceRacingFixedUsingGaurd();
-    
-    
-//     std::ofstream f("tmp.txt",std::ofstream::app);
-//     f<<11;
-//     f<<"ss";
-//     f.close();
+//     sharedResourceRacingFixedUsingGuard();
+//     deadLockExample();
+//     deadLockSolvedExample();
+//    deadLockGuardSolvedExample();
     
     return 0;
 }
-
-
-
-
-
-//int main()
-// {   
-//         //std::thread worker(doWork);
-//     
-//     std::thread thread1(function1);
-//     std::thread thread2(function2);
-//     
-//     thread1.join();
-//     thread2.join();
-//     
-//     //std::cin.get();
-// }
-// 
-
-
-
-
