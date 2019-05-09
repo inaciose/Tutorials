@@ -204,6 +204,8 @@ TARGET_LINK_LIBRARIES(unions)
 ADD_EXECUTABLE(timers src/timers.cpp)
 TARGET_LINK_LIBRARIES(timers)
 
+ADD_EXECUTABLE(fork src/fork.cpp)
+TARGET_LINK_LIBRARIES(fork)
 
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
@@ -218,7 +220,13 @@ TARGET_LINK_LIBRARIES(data_structure)
 ADD_EXECUTABLE(dynamic_programming  src/data_structure_algorithm/dynamic_programming.cpp)
 TARGET_LINK_LIBRARIES(dynamic_programming)
 
+ADD_EXECUTABLE(sort_algorithms  src/data_structure_algorithm/sort_algorithms.cpp)
+TARGET_LINK_LIBRARIES(sort_algorithms)
 
+ADD_EXECUTABLE(self_balancing_binary_search_tree  src/data_structure_algorithm/self_balancing_binary_search_tree.cpp)
+TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
+
+ 
 
 
 IF(testing_enabled)

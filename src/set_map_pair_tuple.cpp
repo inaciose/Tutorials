@@ -20,6 +20,11 @@ depends mainly on what the task at hand is. If you want to build a dictionary of
  how many times each word appeared (i.e. associate a value to the key)
 then you would need an std::map<std::string,int>. If you don't need to associate that count,
  it does not make sense to have the int that is unnecessary.
+ 
+ 
+Tie:
+
+The work of tie() is to unpack the tuple values into seperate variables. There are two variants of tie(), with and without “ignore” , the “ignore” ignores a particular tuple element and stops it from getting unpacked.
 */
 
 std::tuple<int, double, std::string> tupleExample()
@@ -277,6 +282,22 @@ void unordered_setExample()
    
 }
 
+void tieExample()
+{
+    int i_val; 
+    char ch_val; 
+    float f_val;    
+      
+    // Initializing tuple 
+    std::tuple <int,char,float> tup1(20,'g',17.5);
+    
+    
+    std::tie(i_val,ch_val,f_val) = tup1;
+    
+    std::tie(i_val,std::ignore,f_val) = tup1;
+    std::cout<<i_val<<" " <<ch_val<<" " <<f_val  <<std::endl;
+    
+}
 
 int main ()
 {
@@ -288,10 +309,12 @@ int main ()
 //     unordered_setExample();
 //    setFromUserDefinedTypeExample();
     
-    int i;
-    double d; 
-    std::string s;
-    std::tie(i,d,s)=tupleExample();
+//     int i;
+//     double d; 
+//     std::string s;
+//     std::tie(i,d,s)=tupleExample();
+    
+    tieExample();
     return 0;
 }
 
