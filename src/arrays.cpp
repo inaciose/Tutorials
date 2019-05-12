@@ -125,6 +125,27 @@ void cppArrayExample()
     //to_array
 }
 
+void twoDimentionalArray()
+{
+    int **array;
+    array=new int *[3];
+    array[0]=new int[2];
+    array[1]=new int[4];
+    array[2]=new int[3];
+
+    array[0][0]=1;
+    array[0][1]=0;
+
+    array[1][0]=5;
+    array[1][1]=4;
+
+    std::cout<<array[1][1] <<std::endl;
+
+    delete[] array[0];
+    delete[] array[1];
+    delete[] array[2];
+    delete[] array;
+}
 
 int main(int argc, char *argv[])
 {

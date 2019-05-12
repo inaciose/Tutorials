@@ -18,7 +18,7 @@ void std_sort(int* array, int array_size)
 
 void insertionSortAlgorithm(int* array, int array_size)
 {
-    for(std::size_t i=1;i<array_size;i++)
+    for(int i=1;i<array_size;i++)
     {
         int key=array[i];
         int j=i-1;
@@ -65,8 +65,8 @@ int main()
 
 //    printArray(unsorted_array,  n);
 
-    char * text="Hello world";
-    int * x;
+    const char * text="Hello world";
+    int * x=nullptr;
     std::cout<< sizeof(text)<<std::endl;
     std::cout<< sizeof(x)<<std::endl;
     std::cout<< x<<std::endl;

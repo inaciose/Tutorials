@@ -675,11 +675,19 @@ void merge()
     std::merge(vec1.begin(),vec1.end(),vec2.begin(),vec2.end(),vec_out.begin());//keep duplicate items
 }
 
+void accumulateExample()
+{
+    int array[]={2,3,4};
+    int sum =std::accumulate(std::begin(array),std::end(array),0);
+    std::cout<<sum <<std::endl;
+    
+}
+
 int main(int argc, char ** argv)
 {
-
-    unique();
+    accumulateExample();
 /*
+    unique();
     count();
     min_max();
     distance();
@@ -779,5 +787,5 @@ int main(int argc, char ** argv)
 //    //std::begin(digits), std::end(digits)
 //    //std::align();
 
-    permutation();
+//     permutation();
 }

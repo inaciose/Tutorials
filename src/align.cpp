@@ -113,19 +113,26 @@ void perfomanceBenchmarking()
 */
 
     int m,n;
-    int myarray[m][n];
-
+    m=10;
+    n=10;
+    //int myarray[m][n];
+    
+    
+    int **myarray;
+    myarray=new int*[m];
+    for(int j=0;j<m;j++)
+        myarray[j]=new int[j];
 
     //row major traverse
-    for(std::size_t i=0;i++;i<m)
-        for(std::size_t j=0;j++;j<n)
-            myarray[i][j]++;
+    for(int i=0;i<m;i++)
+        for(int j=0;j<n;j++)
+            myarray[i][j]=myarray[i][j]+1;
 
 
     //col major traverse
-    for(std::size_t i=0;i++;i<m)
-        for(std::size_t j=0;j++;j<n)
-            myarray[j][i]++;
+    for(int i=0;i<m;i++)
+        for(int j=0;j<n;j++)
+            myarray[j][i]=myarray[j][i]+1;
 
 
     constexpr size_t size=2<<26;
@@ -139,7 +146,7 @@ the reason is cpu fetch data from memory( our array) on the chunk size of cache_
     int step=1;//2,3,...2048
 
     int *array=new int[size];
-    for(int i=0;i<size;i+=step)
+    for(int i=0;i<int(size);i+=step)
         array[i]++;
     std::cout<<"size: " <<size <<std::endl;
 

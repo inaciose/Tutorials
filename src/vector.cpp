@@ -160,6 +160,36 @@ void  vectorExample()
 
 }
 
+/*
+very important tip, since here pushing during the loop, the dstination vector 
+might need to resize couple of times, so we resize it once in the begining
+*/
+void vectorPushBack()
+{
+    int size=10;
+    int value =0;
+    std::vector<int> src(size,value);
+    std::vector<int> dst;
+    dst.resize(src.size());
+    for(auto i:src)
+        dst.push_back(i);
+}
+
+/*
+Very important tip, we can access vector element both by [i] operator and by .at(i) function. at(i) is a function call while [] is a direct access so it is cheaper and more efficient
+*/
+void vectorAccessingElements()
+{
+    int size=10;
+    int value =0;
+    std::vector<int> src(size,value);
+    for(auto i:src)
+        std::cout<<src[i];
+    
+    
+}
+
+
 int main()
 {
     //cStyleArrayToVecExample();

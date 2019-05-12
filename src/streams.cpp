@@ -2,17 +2,21 @@
 #include <fstream> //for file IO, both read and write
 #include <bitset>
 #include <complex>
-#include <strstream>
+#include <map>
 
 /*
+cout
 
-cout is an object! from type ostream which is in fact -> typedef basic_ostream<char> 		ostream;
-<< operator has the following signatur function which has been overloaded for various type string, int, double:
+    cout is an object! from type ostream which is in fact -> typedef basic_ostream<char> ostream;
+    
+<< operator
+
+    << operator has the following signatur function which has been overloaded for various type string, int, double:
     ostream& ostream::operation<<(string v)
-and returns the refrence to the current stream
+    and returns the refrence to the current stream
 
-what is stream?
-Serial IO interface to external devices: file, stdin/stdout,network
+What is stream?
+    Serial IO interface to external devices: file, stdin/stdout,network
 
 Random access:
     sting my_str;
@@ -21,9 +25,86 @@ Random access:
 Serial Access:
     cout[3];// error!
 
+    
+StringStream
+    A stringstream associates a string object with a stream allowing you to read from the string as if it were a stream (like cin).
+    
 */
 
+void stringstreamExample()
+{
+    std::stringstream ss;
+    std::string name="behnam";
+    int age=33;
+    ss<<"name: "<<name;
+    ss<<" age: "<<age;
+    std::cout<< ss.str() <<std::endl;
+    
+    std::string word;
+    
+    //ss.getline();
+   
+    ss<<"23 4 5.0";
+    
+    while(ss>>word)
+    {
+        std::cout<<word <<std::endl;
+    }
+    
+/////////////////////////////count words frquency/////////////////////////////////
+    std::stringstream wordsFrquencyStream("a b bb c a dd d");
+    wordsFrquencyStream.str("a b bb c a dd d");
+    
+    std::map<std::string,int> wordsFrquency;
+    while(wordsFrquencyStream>>word)
+    {
+        wordsFrquency[word]++;
+    }
+    std::cout<<"Frequecy of words in "<<wordsFrquencyStream.str() <<std::endl;
 
+    for(auto i:wordsFrquency)
+        std::cout<<i.first<<":" <<i.second <<std::endl;
+
+/////////////////////////////Hex Decimal/////////////////////////////////
+    std::stringstream hexDecimalStream;
+    hexDecimalStream<<std::hex<<10 <<" "<<std::hex<<12;
+    std::cout<<hexDecimalStream.str() <<std::endl;
+    
+    unsigned int x,y;
+    hexDecimalStream>>x>>y;
+    std::cout<< x<<" "<<y <<std::endl;
+
+    
+}
+
+
+//ostream, istream, ofstream and ifstream
+
+void ifstreamExample()
+{
+    
+}
+/*
+The ostream class has methods for formatting output, i.e. specifying scientific notation, fixed decimal notation, or a combination thereof, and for specifying the number of decimal digits displayed. 
+*/
+
+/*
+https://ps.uci.edu/~cyu/p231C/LectureNotes/lecture14:iostreams/lecture14.pdf
+http://www.cplusplus.com/reference/ostream/ostream/write/
+http://www.physics.utah.edu/~detar/lessons/c++/canned_classes/node3.html
+http://www.physics.utah.edu/~detar/lessons/c++/canned_classes/node6.html
+http://www.physics.utah.edu/~detar/lessons/c++/canned_classes/node4.html
+
+*/
+void ostreamExample()
+{
+    
+}
+
+void ofstreamExample()
+{
+    
+}
 void readingWrittingFiles()
 {
     //simple writting
@@ -122,35 +203,10 @@ void formatingStream()
 }
 
 
-void stringstream()
-{
-    std::stringstream ss;
-    std::string name="behnam";
-    int age=33;
-    ss<<"name: "<<name;
-    ss<<" age: "<<age;
-    std::cout<< ss.str() <<std::endl;
-
-    std::string retrived_string;
-    ss>>retrived_string;
-    std::cout<< retrived_string <<std::endl;
-
-    ss>>retrived_string;
-    std::cout<< retrived_string <<std::endl;
-
-    ss>>retrived_string;
-    std::cout<< retrived_string <<std::endl;
-
-    ss>>age;
-    std::cout<< age <<std::endl;
-
-
-
-}
 
 int main()
 {
-    readingWrittingFiles();
+//     readingWrittingFiles();
 //    formatingStream();
-//    stringstream();
+   stringstreamExample();
 }

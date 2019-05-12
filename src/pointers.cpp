@@ -130,7 +130,7 @@ void uniquePointerExample()
         //second way(recommended) for exception safety
         std::unique_ptr<person> entity=std::make_unique<person>();
 
-        //thsi will fail because it is a unique pointer, it can not be copied
+        //this will fail because it is a unique pointer, it can not be copied
         //std::unique_ptr<person> secondentity=entity;
     }
     //before we got here our "entity" has been freed.

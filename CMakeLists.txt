@@ -25,6 +25,19 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+#set warning level into errors 
+if(MSVC)
+  # Force to always compile with W4
+  if(CMAKE_CXX_FLAGS MATCHES "/W[0-4]")
+    string(REGEX REPLACE "/W[0-4]" "/W4" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+  else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+  endif()
+elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
+  # Update if necessary
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wno-long-long -pedantic")
+endif()
+
 #Finding Memory leaking, Stack and Heap overflow
 #set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
 #set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
@@ -84,7 +97,7 @@ TARGET_LINK_LIBRARIES( pointers)
 ADD_EXECUTABLE(string  src/string.cpp )
 TARGET_LINK_LIBRARIES( string)
 
-ADD_EXECUTABLE(operator_overloading  src/operator_overloading.cpp )
+ADD_EXECUTABLE(operator_overloading  src/class/operator_overloading.cpp )
 TARGET_LINK_LIBRARIES( operator_overloading)
 
 ADD_EXECUTABLE(exception_handling  src/exception_handling.cpp)
@@ -207,6 +220,9 @@ TARGET_LINK_LIBRARIES(timers)
 ADD_EXECUTABLE(fork src/fork.cpp)
 TARGET_LINK_LIBRARIES(fork)
 
+ADD_EXECUTABLE(streams src/streams.cpp)
+TARGET_LINK_LIBRARIES(streams)
+
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
 TARGET_LINK_LIBRARIES(hash_table)
@@ -227,7 +243,6 @@ ADD_EXECUTABLE(self_balancing_binary_search_tree  src/data_structure_algorithm/s
 TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
 
  
-
 
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)

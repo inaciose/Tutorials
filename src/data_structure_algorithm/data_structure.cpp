@@ -5,7 +5,9 @@
 #include <iterator>
 #include <map>
 #include <list>
-#include <limits.h> 
+#include <limits.h>
+#include <queue>
+
 
 class node
 {
@@ -266,12 +268,10 @@ void huffmanCoding()
 {
     std::map<std::string, int> inputList;
 
-    
+    /*
     auto cmp=[](std::pair<std::string,int> &left,std::pair<std::string,int> &right){ return (left.second>right.second) ;};
-    
-    
-    //auto inputList=std::map<std::string, int, decltype(cmp)  >(cmp);
-    
+    auto inputList=std::map<std::string, int, decltype(cmp)  >(cmp);
+    */
     inputList.insert(std::make_pair("E",2));
     inputList.insert(std::make_pair("A",3));
     inputList.insert(std::make_pair("D",4));
@@ -393,7 +393,7 @@ int minDistance(int dist[], bool sptSet[])
 } 
   
 // A utility function to print the constructed distance array 
-int printSolution(int dist[], int n) 
+void  printSolution(int dist[], int n) 
 { 
     printf("Vertex   Distance from Source\n"); 
     for (int i = 0; i < V; i++) 
@@ -485,6 +485,47 @@ std::string binary(unsigned x)
     } while (x >>= 1);
     std::reverse(s.begin(), s.end());
     return s;
+}
+
+template<typename T> void print_queue(T& q) {
+    while(!q.empty()) {
+        std::cout << q.top() << " ";
+        q.pop();
+    }
+    std::cout << '\n';
+}
+
+
+void priority_queue()
+{
+    //use heap for finding max/min value,
+
+    std::priority_queue<int> q;
+
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        q.push(n);
+
+    print_queue(q);
+
+    std::priority_queue<int, std::vector<int>, std::greater<int> > q2;
+
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        q2.push(n);
+
+    print_queue(q2);
+
+    // Using lambda to compare elements.
+    auto cmp = [](int left, int right) { return (left ^ 1) < (right ^ 1);};
+
+
+
+    std::priority_queue<int, std::vector<int>, decltype(cmp)> q3(cmp);
+
+    for(int n : {1,8,5,6,3,4,0,9,7,2})
+        q3.push(n);
+
+    print_queue(q3);
+
 }
 
 int main()

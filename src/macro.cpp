@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 
     std::cout << SOFTWARE  << VERSION << std::endl;
 
-    int x,y,z;
+    int x,y;
     x=2;
     y=3;
     ADD(x,y);

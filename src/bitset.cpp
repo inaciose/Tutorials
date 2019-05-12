@@ -51,7 +51,7 @@ int main()
   
     // test function return 1 if bit is set else returns 0 
     cout << "bool representation of " << set8 << " : "; 
-    for (int i = 0; i < set8.size(); i++) 
+    for (std::size_t i = 0; i < set8.size(); i++) 
         cout << set8.test(i) << " "; 
   
     cout << endl; 
