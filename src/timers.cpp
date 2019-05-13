@@ -44,11 +44,7 @@ void timeLapseSecondExample()
 /*code to measure*/
 	for(int i=0;i<1000000;i++)
 	{
-		i*i;
-		i*i;
-		i*i;
-		i*i;
-		i*i;
+        std::this_thread::sleep_for(std::chrono::microseconds(1000));
 	}
     float time1 = (float) (clock() - start_time) / CLOCKS_PER_SEC;
     printf("time for code was %f seconds\n", time1);

@@ -220,8 +220,8 @@ TARGET_LINK_LIBRARIES(timers)
 ADD_EXECUTABLE(fork src/fork.cpp)
 TARGET_LINK_LIBRARIES(fork)
 
-ADD_EXECUTABLE(streams src/streams.cpp)
-TARGET_LINK_LIBRARIES(streams)
+ADD_EXECUTABLE(streams_IO_operation_format_output src/streams_IO_operation_format_output.cpp)
+TARGET_LINK_LIBRARIES(streams_IO_operation_format_output)
 
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)

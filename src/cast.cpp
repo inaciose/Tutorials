@@ -42,15 +42,16 @@ void staticCastExmple()
         float f = 3.5; 
         int a = f; // c style 
         int b = static_cast<int>(f);// recommended
-        std::cout << "a:"<<a << std::endl;
+        std::cout <<"b: "<<b <<"a:"<<a << std::endl;
     }
     
     {//second example
-        int a = 10; 
+       
         char c = 'a'; 
 
         //c style casting,pass at compile time, may fail at run time 
         int* q = (int*)&c;
+        std::cout<< "q"<<* q<<std::endl;
         // this is will fail in comile time
         //int* p = static_cast<int*>(&c);
     }

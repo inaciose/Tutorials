@@ -4,13 +4,14 @@ In this example we gonna overload the following operators:
 ()
 -
 <<
+>>
 = deep copy
 
 */
 
 #include <iostream>
 #include<cstring>
-
+#include <istream>
 class money
 {
 
@@ -64,6 +65,8 @@ double operator ()()
 friend money operator - (const money &t1,const money &t2);
 friend money operator -(const money &t1, int value);
 friend std::ostream& operator<<(std::ostream& os, const money& t);
+friend std::istream& operator >> (std::istream &is,const money& t);
+ 
 };
 
 
@@ -83,6 +86,12 @@ money operator -(const money &t1, int value)
     return money(t1.value-value);
 }
 
+std::istream& operator >> (std::istream& is, const money& t)
+{
+    is>>t.value;
+    return is;
+}
+
 int main()
 {
 
@@ -99,6 +108,12 @@ int main()
 ////////////////////////// << operator overloading ///////////////////////
 
     std::cout<< "money1 gives you:"<< money1<<std::endl;
+    
+////////////////////////// >> operator overloading ///////////////////////
+
+    std::cin>> money1;
+    std::cout<< "money1 gives you:"<< money1<<std::endl;
+
 
 /////////////////////////// = overloading (deep copy) ///////////////////////
 

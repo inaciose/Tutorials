@@ -34,7 +34,7 @@ a ^ b	a != b
 */
 
 
-int bitwiseshiftPOW2(int number=2,int power=5)
+void bitwiseshiftPOW2(int number=2,int power=5)
 {
 //	[variable]<<[number of places to shift]
     
