@@ -56,9 +56,24 @@ Overloading << and >>
     
     
 StringStream
+    stream is serial IO interface to external devices: file, stdin/stdout,network. A stringstream associates a string object with a stream allowing you to read from the string as if it were a stream (like cin).
 
-    stream is serial IO interface to external devices: file, stdin/stdout,network.
-    A stringstream associates a string object with a stream allowing you to read from the string as if it were a stream (like cin).
+    
+The Bufer
+    
+    
+    
+    On input, the situation is reversed. When the ios class asks for the first character from the input stream, the input buffer is empty. Rather than read a single character (even if that were possible), the streambuf reads several blocks of data into the input buffer. Then streambuf returns only the first character to ios and keeps the rest. When the next input request comes in, streambuf returns the next character from the input buffer without bothering to read from the disk. The streambuf class doesn't read from the disk again until the input buffer has been emptied by input requests.
+    
+    
+    he base class ios does most of the input/output work. But it  needs another class called streambuf which acts as a server to the ios class. streambuf is an intermediatry between ios and the physical media, e.g., the screen, the disk, etc. The class streambuf performs the actual I/O to the outside world. The class streambuf  has several subclasses, each of which specializes in its own particular type of media. For example, filebuf handles file I/O for the ios class.
+    
+    ofstream out("ofile.txt");
+    int nAnInt = 10;
+    out << nAnInt;
+    
+    The constructor for ofstream first creates an ios ob ject. It then constructs a filebuf object for output to the file ofile.txt. During output, the ios ob ject converts the number 10 into the character 1 followed by the character 0. The ios ob ject passes the
+    string "10" to the filebuf ob ject for output to the file. This is a nice division of labor. When you create a different type of output ob ject{for example an ostream ob ject that outputs to the display{you get the same ios base class ob ject (all formatting is the same, after all) but a different subclass of streambuf (outputting to a display is not at all the same as outputting to a file). when you  read or write to the disk, you must read an entire block of data at a time. The size of a block depends on the disk, but it's usually 512 bytes or more. Therefore, on output, the streambuf class collects output requests in the buffer until it has several blocks worth. It then writes the entire buffer to the disk at once. Writing the output buffer to disk is called ushing the buffer." For example, endl ends the line ("\n") and then ushes the buffer.
 */
 
 
@@ -92,6 +107,9 @@ ios::trunc       out               Truncate file to zero length if it already ex
 ___________________________________________________________________________
 
 modes are bitset. For instance, ios::app might equal 00000001, ios::ate might equal 00000010, ios::out might equal 00000100, etc. So each mode corresponds to one bit which can be 0 or 1. This means that more than one mode's value can be set at the same time using the arithmetic OR.
+
+
+
 
 */
     {
@@ -296,6 +314,22 @@ It has two version:
     
     
     
+}
+
+void fastIO()
+{
+/*
+It is often recommended to use scanf/printf instead of cin/cout for a fast input and output. However, you can still use cin/cout and achieve the same speed as scanf/printf by including the following two lines in your main() function:
+*/
+    std::ios_base::sync_with_stdio(false);
+    std::cin.tie(NULL);
+/*
+It toggles on or off the synchronization of all the C++ standard streams with their corresponding standard C streams if it is called before the program performs its first input or output operation. Adding ios_base::sync_with_stdio (false); (which is true by default) before any I/O operation avoids this synchronization. It is a static member of function of std::ios_base.
+
+tie() is a method which simply guarantees the flushing of std::cout before std::cin accepts an input. This is useful for interactive console programs which require the console to be updated constantly but also slows down the program for large I/O. The NULL part just returns a NULL pointer.
+
+It is recommended to use cout << “\n”; instead of cout << endl;. endl is slower because it forces a flushing stream, which is usually unnecessary 
+*/
 }
 
 int main()

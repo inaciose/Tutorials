@@ -157,6 +157,9 @@ TARGET_LINK_LIBRARIES(variadic_templates)
 ADD_EXECUTABLE(enum src/enum.cpp)
 TARGET_LINK_LIBRARIES(enum)
 
+ADD_EXECUTABLE(diamond_problem_virtual_inheritance src/class/diamond_problem_virtual_inheritance.cpp)
+TARGET_LINK_LIBRARIES(diamond_problem_virtual_inheritance)
+
 ADD_EXECUTABLE(shadowing src/class/shadowing.cpp)
 TARGET_LINK_LIBRARIES(shadowing)
 
@@ -223,6 +226,19 @@ TARGET_LINK_LIBRARIES(fork)
 ADD_EXECUTABLE(streams_IO_operation_format_output src/streams_IO_operation_format_output.cpp)
 TARGET_LINK_LIBRARIES(streams_IO_operation_format_output)
 
+
+ADD_EXECUTABLE(explicit  src/explicit.cpp)
+TARGET_LINK_LIBRARIES(explicit)
+
+ADD_EXECUTABLE(volatile  src/volatile.cpp)
+TARGET_LINK_LIBRARIES(volatile)
+
+ADD_EXECUTABLE(register  src/register.cpp)
+TARGET_LINK_LIBRARIES(register)
+
+ADD_EXECUTABLE(const_constexpr_mutable  src/const_constexpr_mutable.cpp)
+TARGET_LINK_LIBRARIES(const_constexpr_mutable)
+
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
 TARGET_LINK_LIBRARIES(hash_table)
@@ -241,8 +257,6 @@ TARGET_LINK_LIBRARIES(sort_algorithms)
 
 ADD_EXECUTABLE(self_balancing_binary_search_tree  src/data_structure_algorithm/self_balancing_binary_search_tree.cpp)
 TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
-
- 
 
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)
