@@ -39,8 +39,8 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 #Finding Memory leaking, Stack and Heap overflow
-#set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
-#set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 
 
 ######################### How to cpack create deb file#########################
@@ -180,8 +180,8 @@ TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
 
 
 
-ADD_EXECUTABLE(cast src/cast.cpp)
-TARGET_LINK_LIBRARIES(cast)
+ADD_EXECUTABLE(cast_RTTI src/cast_RTTI.cpp)
+TARGET_LINK_LIBRARIES(cast_RTTI)
 
 ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
 TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
@@ -241,7 +241,8 @@ TARGET_LINK_LIBRARIES(const_constexpr_mutable)
 ADD_EXECUTABLE(literals  src/literals.cpp)
 TARGET_LINK_LIBRARIES(literals)
 
-
+ADD_EXECUTABLE(ternary src/ternary.cpp)
+TARGET_LINK_LIBRARIES(ternary)
 
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
@@ -262,9 +263,11 @@ TARGET_LINK_LIBRARIES(sort_algorithms)
 ADD_EXECUTABLE(self_balancing_binary_search_tree  src/data_structure_algorithm/self_balancing_binary_search_tree.cpp)
 TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
 
-
 ADD_EXECUTABLE(heap src/data_structure_algorithm/heap.cpp)
 TARGET_LINK_LIBRARIES(heap)
+
+ADD_EXECUTABLE(cast_Base_to_Derived_to_Base src/class/cast_Base_to_Derived_to_Base.cpp)
+TARGET_LINK_LIBRARIES(cast_Base_to_Derived_to_Base)
 
 
 

@@ -3,11 +3,14 @@
 /*
 1. Static Cast
     It is a compile time cast. static_cast performs a tight type checking.  
-2. Dynamic Cast
+
+2. Dynamic Cast, 
     This cast is executed at runtime, not compile time. It is exclusively used for handling polymorphism.
     
     You can use it for more than just casting downwards – you can cast sideways or even up another chain. The dynamic_cast will seek out the desired object and return it if possible. If it can't, it will return nullptr in the case of a pointer, or throw std::bad_cast in the case of a reference.
     
+    RTTI (Run-time type Information):
+    In C++, RTTI (Run-time type information) is a mechanism that exposes information about an object’s data type at runtime and is available only for the classes which have at least one virtual function. It allows the type of an object to be determined during program execution
     
 
 3. Const Cast
@@ -75,9 +78,24 @@ void staticCastExmple()
 //////////////////////////////Dynamic Cast///////////////////////////
 class Base
 {
+/*
+RTTI (Run-time type information) is a mechanism that exposes information about an object’s data type at runtime and is available only for the classes which have at least one virtual function.
+*/
     virtual void f() { }
+public:
+    void whoAmI()
+    {
+        std::cout<<"Base" <<std::endl;
+    }
 };
-class Derived:Base{};
+class Derived:public Base
+{
+    public:
+    void whoAmI()
+    {
+        std::cout<<"Base" <<std::endl;
+    }
+};
 
 class Foo{};
 
@@ -86,16 +104,33 @@ void dynamicCastExample()
     Base base;
     Derived derived;
 
-    Base* basePointer = &base;
-    Derived* derived1 = dynamic_cast<Derived*> (&base);  // NULL, because 'base' is not a 'derived'
-    
-    Derived* derived2 = dynamic_cast<Derived*> (basePointer);  // 'base'
-    
-    Foo* foo = dynamic_cast<Foo*> (basePointer);   // NULL.
 
+    Derived* derived1 = dynamic_cast<Derived*> (&base);  // nullptr, because 'base' is not a 'derived'
+    std::cout<<"derived1 is: " <<(derived1 ==nullptr ? "nullptr":"object of Derived class")<<std::endl;
+    
+    
+    
+    Base* basePointer = new Base;
+    Derived* derived2 = dynamic_cast<Derived*> (basePointer); 
+    std::cout<<"derived2 is: " <<(derived2 ==nullptr ? "nullptr":"object of Derived class")<<std::endl;
+
+    
+    Base *b = new Derived; 
+    Derived *d = dynamic_cast<Derived*>(b);
+    std::cout<<"d is: " <<(d ==nullptr ? "nullptr":"object of Derived class")<<std::endl;
+   
+    
+    Foo* foo = dynamic_cast<Foo*> (basePointer);  // nullptr
+    std::cout<<"foo is: " <<(foo ==nullptr ? "nullptr":"object of Derived class")<<std::endl;
+    
+    
     Base& baseReference = dynamic_cast<Base&> (*basePointer); // Ok.
-    Derived& derivedReference = dynamic_cast<Derived&> (*basePointer); // Ok.
-    Foo& fooReference = dynamic_cast<Foo&> (*basePointer); // std::bad_cast
+   
+    
+//     Derived& derivedReference = dynamic_cast<Derived&> (*basePointer); // Ok.
+    
+    //this will create a std::bad_cast
+    //Foo& fooReference = dynamic_cast<Foo&> (*basePointer);
     
     
 }
@@ -182,6 +217,6 @@ void reinterpretCastExample()
 int main()
 {
     //staticCastExmple();
-    //dynamicCastExample();
-    reinterpretCastExample();
+    dynamicCastExample();
+    //reinterpretCastExample();
 }
