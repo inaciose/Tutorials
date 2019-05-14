@@ -178,8 +178,7 @@ TARGET_LINK_LIBRARIES(set_map_pair_tuple)
 ADD_EXECUTABLE(multiple_inheritance_polymorphism src/class/multiple_inheritance_polymorphism.cpp)
 TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
 
-ADD_EXECUTABLE(heap src/heap.cpp)
-TARGET_LINK_LIBRARIES(heap)
+
 
 ADD_EXECUTABLE(cast src/cast.cpp)
 TARGET_LINK_LIBRARIES(cast)
@@ -257,6 +256,10 @@ TARGET_LINK_LIBRARIES(sort_algorithms)
 
 ADD_EXECUTABLE(self_balancing_binary_search_tree  src/data_structure_algorithm/self_balancing_binary_search_tree.cpp)
 TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
+
+
+ADD_EXECUTABLE(heap src/data_structure_algorithm/heap.cpp)
+TARGET_LINK_LIBRARIES(heap)
 
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)
