@@ -94,14 +94,28 @@ Declares a pointer whose data cannot be changed through the pointer:
     const int *p = &someInt;
 Declares a pointer who cannot be changed to point to something else:
     int * const p = &someInt;
-to make it easy toread remove the variable type,  then read it like:
+to make it easy to read remove the variable type,  then read it like:
     const int *p;  ==> const  *p ; ==> *p is which is data is fixed;
     int * const p ==>  * const p ==> p is fixed which is an address;
 */
 
 void constPointersExample()
 {
+    char const* p2 = "Mary";
+    // not allowed.
+    //*p2 = 'C';
     
+    // allowed
+    p2 = "Margareth";  
+
+    char * const p1 = "John";
+    
+    // allowed
+    *p1 = 'C'; 
+    
+    //not allowed
+    //p1 = "Margarth";
+
 }
 
 /*
@@ -146,10 +160,11 @@ int mutableExample()
 
 //constexpr
 //https://www.geeksforgeeks.org/understanding-constexper-specifier-in-c/
-
+//https://www.ibm.com/support/knowledgecenter/SSGH3R_13.1.0/com.ibm.xlcpp131.aix.doc/language_ref/constexpr_constructors.html
 
 int main()
 {
-   constFunctionExample(); 
+    //constFunctionExample();
+    constPointersExample();
 }
 

@@ -238,6 +238,11 @@ TARGET_LINK_LIBRARIES(register)
 ADD_EXECUTABLE(const_constexpr_mutable  src/const_constexpr_mutable.cpp)
 TARGET_LINK_LIBRARIES(const_constexpr_mutable)
 
+ADD_EXECUTABLE(literals  src/literals.cpp)
+TARGET_LINK_LIBRARIES(literals)
+
+
+
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
 TARGET_LINK_LIBRARIES(hash_table)
@@ -260,6 +265,8 @@ TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
 
 ADD_EXECUTABLE(heap src/data_structure_algorithm/heap.cpp)
 TARGET_LINK_LIBRARIES(heap)
+
+
 
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)
