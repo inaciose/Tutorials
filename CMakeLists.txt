@@ -39,8 +39,8 @@ elseif(CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 #Finding Memory leaking, Stack and Heap overflow
-set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
-set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
+#set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
+#set(CMAKE_CXX_FLAGS "-fno-omit-frame-pointer ${CMAKE_CXX_FLAGS}")
 
 
 ######################### How to cpack create deb file#########################
@@ -244,6 +244,9 @@ TARGET_LINK_LIBRARIES(literals)
 ADD_EXECUTABLE(ternary src/ternary.cpp)
 TARGET_LINK_LIBRARIES(ternary)
 
+ADD_EXECUTABLE(lists src/lists.cpp)
+TARGET_LINK_LIBRARIES(lists)
+
 #########################data structure and algorithm#########################
 ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
 TARGET_LINK_LIBRARIES(hash_table)
@@ -270,6 +273,7 @@ ADD_EXECUTABLE(cast_Base_to_Derived_to_Base src/class/cast_Base_to_Derived_to_Ba
 TARGET_LINK_LIBRARIES(cast_Base_to_Derived_to_Base)
 
 
+OPTION(TESTING "Enable testing" OFF)
 
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)

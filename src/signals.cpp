@@ -56,7 +56,7 @@ void handle(int signum)
 
 void SIGSEGVhandle(int signum) 
 { 
-     std::cout << "segmenation fault happened"<< std::endl;
+     std::cout << "oh my god! segmenation fault happened"<< std::endl;
      printf("Process %d got signal %d\n", getpid(), signum);
      
      //kill(getpid(), signum);
