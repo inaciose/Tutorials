@@ -48,6 +48,11 @@ Collision Handling:
     The idea is to make each cell of hash table point to a linked list of records that have same hash function value. Chaining is simple, but requires additional memory outside the table.
     2)Open Addressing: 
     In open addressing, all elements are stored in the hash table itself. Each table entry contains either a record or NIL. When searching for an element, we one by one examine table slots until the desired element is found or it is clear that the element is not in the table. (linear, quadratic and double probing).
+    
+
+    
+hash-table-vs-stl-map
+https://www.geeksforgeeks.org/hash-table-vs-stl-map/
 */
 
 namespace chaining
