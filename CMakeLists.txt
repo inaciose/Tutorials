@@ -169,22 +169,20 @@ TARGET_LINK_LIBRARIES(protected_friend_class_function)
 ADD_EXECUTABLE(virtual_function_abstract_class src/class/virtual_function_abstract_class.cpp)
 TARGET_LINK_LIBRARIES(virtual_function_abstract_class)
 
+ADD_EXECUTABLE(multiple_inheritance_polymorphism src/class/multiple_inheritance_polymorphism.cpp)
+TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
+
+ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
+TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
+
 ADD_EXECUTABLE(switch_case src/switch_case.cpp)
 TARGET_LINK_LIBRARIES(switch_case)
 
 ADD_EXECUTABLE(set_map_pair_tuple src/set_map_pair_tuple.cpp)
 TARGET_LINK_LIBRARIES(set_map_pair_tuple)
 
-ADD_EXECUTABLE(multiple_inheritance_polymorphism src/class/multiple_inheritance_polymorphism.cpp)
-TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
-
-
-
 ADD_EXECUTABLE(cast_RTTI src/cast_RTTI.cpp)
 TARGET_LINK_LIBRARIES(cast_RTTI)
-
-ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
-TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
 
 ADD_EXECUTABLE(signals src/signals.cpp)
 TARGET_LINK_LIBRARIES(signals)
@@ -247,34 +245,10 @@ TARGET_LINK_LIBRARIES(ternary)
 ADD_EXECUTABLE(lists src/lists.cpp)
 TARGET_LINK_LIBRARIES(lists)
 
-#########################data structure and algorithm#########################
-ADD_EXECUTABLE(hash_table  src/data_structure_algorithm/hash_table.cpp)
-TARGET_LINK_LIBRARIES(hash_table)
-
-ADD_EXECUTABLE(adjacency_list  src/data_structure_algorithm/adjacency_list.cpp)
-TARGET_LINK_LIBRARIES(adjacency_list)
-
-ADD_EXECUTABLE(data_structure  src/data_structure_algorithm/data_structure.cpp)
-TARGET_LINK_LIBRARIES(data_structure)
-
-ADD_EXECUTABLE(dynamic_programming  src/data_structure_algorithm/dynamic_programming.cpp)
-TARGET_LINK_LIBRARIES(dynamic_programming)
-
-ADD_EXECUTABLE(sort_algorithms  src/data_structure_algorithm/sort_algorithms.cpp)
-TARGET_LINK_LIBRARIES(sort_algorithms)
-
-ADD_EXECUTABLE(self_balancing_binary_search_tree  src/data_structure_algorithm/self_balancing_binary_search_tree.cpp)
-TARGET_LINK_LIBRARIES(self_balancing_binary_search_tree)
-
-ADD_EXECUTABLE(heap src/data_structure_algorithm/heap.cpp)
-TARGET_LINK_LIBRARIES(heap)
-
 ADD_EXECUTABLE(cast_Base_to_Derived_to_Base src/class/cast_Base_to_Derived_to_Base.cpp)
 TARGET_LINK_LIBRARIES(cast_Base_to_Derived_to_Base)
 
-
 OPTION(TESTING "Enable testing" OFF)
-
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)
 ENDIF()
