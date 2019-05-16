@@ -1,5 +1,5 @@
 # C++ Tutorials
-This repository contains my tutrial code for my c++ projects. It includes varuois examples for:
+This repository contains my tutorials code for my c++ projects. It includes varuois examples for:
 
 [Align](src/align.cpp)  
 [Arrays](src/arrays.cpp)  
