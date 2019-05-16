@@ -7,7 +7,7 @@ This repository contains my tutrial code for my c++ projects. It includes varuoi
 [Bindinng](src/bind.cpp)  
 [Bitset](src/bitset.cpp)  
 [Bitwise Operations](src/bitwise_operations.cpp)  
-[Cassting, Run-Time Type Information(RTTI)](src/cast_RTTI.cpp)  
+[Cassting (Static_Cassting, Dynamic_Casting), Run-Time Type Information(RTTI)](src/cast_RTTI.cpp)  
 [Conditional Compilation](src/conditional_compilation.cpp)  
 [Const, Constexpr and Mutable](src/const_constexpr_mutable.cpp) 
 [Data Type Info](src/data_type_info.cpp)   
