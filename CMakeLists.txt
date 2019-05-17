@@ -97,9 +97,6 @@ TARGET_LINK_LIBRARIES( pointers)
 ADD_EXECUTABLE(string  src/string.cpp )
 TARGET_LINK_LIBRARIES( string)
 
-ADD_EXECUTABLE(operator_overloading  src/class/operator_overloading.cpp )
-TARGET_LINK_LIBRARIES( operator_overloading)
-
 ADD_EXECUTABLE(exception_handling  src/exception_handling.cpp)
 TARGET_LINK_LIBRARIES( exception_handling)
 
@@ -175,6 +172,12 @@ TARGET_LINK_LIBRARIES(multiple_inheritance_polymorphism)
 ADD_EXECUTABLE(private_public_protected_inheritance src/class/private_public_protected_inheritance.cpp)
 TARGET_LINK_LIBRARIES(private_public_protected_inheritance)
 
+ADD_EXECUTABLE(cast_Base_to_Derived_to_Base src/class/cast_Base_to_Derived_to_Base.cpp)
+TARGET_LINK_LIBRARIES(cast_Base_to_Derived_to_Base)
+
+ADD_EXECUTABLE(operator_overloading  src/class/operator_overloading.cpp )
+TARGET_LINK_LIBRARIES( operator_overloading)
+
 ADD_EXECUTABLE(switch_case src/switch_case.cpp)
 TARGET_LINK_LIBRARIES(switch_case)
 
@@ -223,7 +226,6 @@ TARGET_LINK_LIBRARIES(fork)
 ADD_EXECUTABLE(streams_IO_operation_format_output src/streams_IO_operation_format_output.cpp)
 TARGET_LINK_LIBRARIES(streams_IO_operation_format_output)
 
-
 ADD_EXECUTABLE(explicit  src/explicit.cpp)
 TARGET_LINK_LIBRARIES(explicit)
 
@@ -245,8 +247,12 @@ TARGET_LINK_LIBRARIES(ternary)
 ADD_EXECUTABLE(lists src/lists.cpp)
 TARGET_LINK_LIBRARIES(lists)
 
-ADD_EXECUTABLE(cast_Base_to_Derived_to_Base src/class/cast_Base_to_Derived_to_Base.cpp)
-TARGET_LINK_LIBRARIES(cast_Base_to_Derived_to_Base)
+ADD_EXECUTABLE(type_traits src/type_traits.cpp)
+TARGET_LINK_LIBRARIES(type_traits)
+
+ADD_EXECUTABLE(pimpl src/pimpl.cpp)
+TARGET_LINK_LIBRARIES(pimpl)
+
 
 OPTION(TESTING "Enable testing" OFF)
 IF(testing_enabled)
