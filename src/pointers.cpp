@@ -215,6 +215,7 @@ void pointerCasting()
     std::shared_ptr<manager> d = std::static_pointer_cast<manager>(b);
 }
 
+
 int main()
 {
     //pointerExample();
