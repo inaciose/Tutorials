@@ -181,6 +181,13 @@ TARGET_LINK_LIBRARIES( operator_overloading)
 ADD_EXECUTABLE(default_0_delete_meaning  src/class/default_0_delete_meaning.cpp)
 TARGET_LINK_LIBRARIES(default_0_delete_meaning)
 
+ADD_EXECUTABLE(circular_dependency
+    src/class/Circular_Dependency/circular_dependency.cpp
+    src/class/Circular_Dependency/a.cpp
+    src/class/Circular_Dependency/b.cpp
+    src/class/Circular_Dependency/c.cpp)
+TARGET_LINK_LIBRARIES(circular_dependency)
+
 ADD_EXECUTABLE(switch_case src/switch_case.cpp)
 TARGET_LINK_LIBRARIES(switch_case)
 
@@ -254,7 +261,13 @@ ADD_EXECUTABLE(type_traits src/type_traits.cpp)
 TARGET_LINK_LIBRARIES(type_traits)
 
 ADD_EXECUTABLE(pimpl src/pimpl/main.cpp src/pimpl/studentpimpl.cpp)
-TARGET_LINK_LIBRARIES(pimpl )
+TARGET_LINK_LIBRARIES(pimpl)
+
+ADD_EXECUTABLE(abstract_class_vs_interface src/class/abstract_class_vs_interface.cpp)
+TARGET_LINK_LIBRARIES(abstract_class_vs_interface)
+
+ADD_EXECUTABLE(typedef src/typedef.cpp)
+TARGET_LINK_LIBRARIES(typedef)
 
 OPTION(TESTING "Enable testing" OFF)
 IF(testing_enabled)

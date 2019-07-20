@@ -93,7 +93,7 @@ class Derived:public Base
     public:
     void whoAmI()
     {
-        std::cout<<"Base" <<std::endl;
+        std::cout<<"Derived" <<std::endl;
     }
 };
 

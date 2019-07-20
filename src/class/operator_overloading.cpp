@@ -49,7 +49,9 @@ money(int value=10)
 
 /*
 Copy constructor:
-money m2 = m1; 
+money m2 = m1;
+or
+money m3(m2);
 */
 money(const money &rhs)
 {
@@ -174,4 +176,10 @@ int main()
     std::cout<< "money5 after updating money5.data[2]=-2 : "<< money5<<std::endl;
     std::cout<< "money3 after updating money3.data[0]=-1 : "<<money3 <<std::endl;
 
+
+    money  money6(money5);
+    money5.data[0]=-3;
+    money6.data[2]=-4;
+    std::cout<< "money5 after updating money5.data[2]=-3 : "<< money5<<std::endl;
+    std::cout<< "money6 after updating money3.data[0]=-4 : "<<money6 <<std::endl;
 }

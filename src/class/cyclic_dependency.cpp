@@ -1,1 +1,0 @@
-http://www.eventhelix.com/realtimemantra/headerfileincludepatterns.htm
