@@ -13,6 +13,7 @@ In this example we gonna overload the following operators:
 #include <algorithm>
 #include<cstring>
 #include <ctime>
+#include <random>
 
 class money
 {
