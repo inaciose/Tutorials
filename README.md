@@ -30,6 +30,7 @@ This repository contains my tutorials code for my c++ projects. It includes varu
 [Loadeding Libraries](src/loadeding_libraries.cpp)  
 [Macro](src/macro.cpp)  
 [Memory Leaking Detection With_Valgrind](src/memory_leaking_valgrind.cpp)  
+[Most Vexing Parse](src/most_vexing_parse.cpp)  
 [Pointers,C style Pointers, Shared, Unique, Weak Pointers](src/pointers.cpp)  
 [Pointer to implementation (pimpl)](src/pimpl/)  
 [Primitive Data Types Numerical Limits Accuracy](src/primitive_data_types_numerical_limits_accuracy.cpp)  
@@ -71,6 +72,7 @@ This repository contains my tutorials code for my c++ projects. It includes varu
 [Shadowing](src/class/shadowing.cpp)  
 [Static Member Function](src/class/static_member_function.cpp)  
 [Virtual Function Abstract Class](src/class/virtual_function_abstract_class.cpp)  
+[Virtual Method Table(VTABLE), Virtual Table Pointer(VPTR)](src/VTABLE_and_VPTR.cpp)  
 
 ## [Multithreading](class/non_modifing_algorithm.cpp)
 

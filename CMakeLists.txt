@@ -269,6 +269,13 @@ TARGET_LINK_LIBRARIES(abstract_class_vs_interface)
 ADD_EXECUTABLE(typedef src/typedef.cpp)
 TARGET_LINK_LIBRARIES(typedef)
 
+ADD_EXECUTABLE(most_vexing_parse src/most_vexing_parse.cpp)
+TARGET_LINK_LIBRARIES(most_vexing_parse)
+
+ADD_EXECUTABLE(VTABLE_and_VPTR src/VTABLE_and_VPTR.cpp)
+TARGET_LINK_LIBRARIES(VTABLE_and_VPTR)
+
+
 OPTION(TESTING "Enable testing" OFF)
 IF(testing_enabled)
 	ADD_SUBDIRECTORY(tests)

@@ -1,5 +1,5 @@
 sudo: false
-dist: xenial 
+dist: bionic
 # Enable C++ support
 language: cpp
 script:
