@@ -2,15 +2,88 @@
 
 
 /*
+https://www.geeksforgeeks.org/virtual-function-cpp/
 
-A pure virtual function or pure virtual method is a virtual function that is required to be implemented by a derived class,
+Very Important
+
+1)Virtual functions are always defined in base class (declaration is not enough, you have to define them as well in the base) and (may or may not) overridden in derived class.
+ 
+2)It is not mandatory for derived class to override (or re-define the virtual function), in that case base class version of function is used.
+
+3)A class may have virtual destructor but it cannot have a virtual constructor.
+
+4)A pure virtual function or pure virtual method is a virtual function that is required to be implemented by a derived class,
 if that class is not abstract.
  
 Here BaseAbstract is an abstract class, meaning it contains at least one pure virtual function.
 You can't amke an object from it and you can only derive from it.
 */
 
-///////////////////////////////////////Pure Virtual and Abstract Classes///////////////////////////////////
+
+
+namespace VirtualFunction
+{
+class base
+{
+public:
+
+    //it is not possible to have virtual constructor!
+    base()
+    {
+        std::cout<<"base constructor" <<std::endl;
+    }
+    //it is possible to have virtual destructor
+    virtual  ~base()
+    {
+        std::cout<<"base destructor" <<std::endl;
+    }
+    // decration like void virtual foo(); is not enough, you have to fully define the function
+    void virtual foo()
+    {
+        std::cout<<"foo base" <<std::endl;
+    }
+
+    //since we shadow the show() in the derived class we can declare it here without full definition
+    void show();
+
+    void print()
+    {
+        std::cout<<"print base" <<std::endl;
+    }
+
+};
+
+
+class derived : public base
+{
+public:
+
+    void foo() override
+    {
+        std::cout<<"foo derived" <<std::endl;
+    }
+
+    void show()
+    {
+        std::cout<<"show derived" <<std::endl;
+    }
+
+    derived()
+    {
+        std::cout<<"derived constructor" <<std::endl;
+    }
+    ~derived()
+    {
+        std::cout<<"derived destructor" <<std::endl;
+    }
+    //we shadow the print from base
+    void print()
+    {
+        std::cout<<"print derived" <<std::endl;
+    }
+
+
+};
 
 namespace  PureVirtual
 {
@@ -58,76 +131,32 @@ public :
 };
 
 }
-/*
-Virtual functions will make the derived class to implement their own version of the virtual function.
-So, in the following, derived class hasn't implemented the info() so you will get an error for this:
-
-    derivedObject.info();
-
-The only way to access the info() is assign a pointer from base class.
-*/
-
-namespace VirtualFunction
-{
-class base
-{
-public:
-    virtual void info()
-    {
-        std::cout<<"info from base" <<std::endl;
-    }
-    void print()
-    {
-        std::cout<<"I'm a base object." <<std::endl;
-    }
-
-
-};
-
-
-class derived:public base
-{
-public:
-
-    void print()
-    {
-        std::cout<<"I'm a derived object." <<std::endl;
-    }
-
-};
 
 }
 int main()
 {
+///////////////////////////////////////Virtual Function///////////////////////////////////
+
     {
-        //this will failed because Base has at least one pure virtual function
-        //PureVirtual::Base baseObject;
-        PureVirtual::Derived  derivedObject;
-        derivedObject.GetValue();
+        std::cout<<"Order of function calls:" <<std::endl;
+        VirtualFunction::derived d1;
+        //foo from derived will be called
+        d1.foo();
+        //since show() has been defined in the derived, we can call show
+        d1.show();
+        d1.print();
     }
 
 
+
+
+///////////////////////////////////////Pure Virtual and Abstract Classes///////////////////////////////////
+
     {
-        VirtualFunction::base baseObject;
-        baseObject.info();
-
-
-        VirtualFunction::derived derivedObject;
-        /*since derived class hasn't implemented the info, we will get an error here*/
-        //derivedObject.info();
-
-        VirtualFunction::base *baseObject2;
-        baseObject2=&derivedObject;
-
-        //binded at runtime
-        baseObject2->info();
-        //print from derived class will be called , binded at compile time
-        baseObject2->print();
-
-
-
 
     }
+
+
 
     return 0;
 }
